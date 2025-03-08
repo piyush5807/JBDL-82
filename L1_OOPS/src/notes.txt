@@ -1,0 +1,83 @@
+/**
+     * JDK - contains libraries, code related files and folders
+     * JRE - Java Runtime environment : Used to run the code
+     *
+     * High level code --> Byte code (Binary form of code which the JVM understands) (javac command) (compiler)
+     * Byte code --> Run on JVM --> Get the output (java command) (runtime)
+ */
+
+/**
+* Most to least restricted access modifiers
+* 1. private - only inside the current class (within the same class)
+* 2. default / no modifier - only accessible inside the current package (all the classes within the same package)
+* 3. protected - same package and subclasses in a different package
+* 4. public - accessible anywhere in the entire project
+*/
+
+-----------------------------------------------------------
+
+// Constructor is a void function with the name same as that of the enclosing class and is called on object creation
+
+------------------------------------------------------------
+
+// For compile time polymorphism / overloading, the function name should be same,
+        // but the method signature should be different
+
+        // If you have same name of the function and same signature --> this is bug
+        // (if the return type is same - duplicate)
+        // (if the return type is different - duplicate / ambiguity for the compiler to chose)
+
+ --------------------------------------------------------------
+
+ /**
+  * OOPS - Object oriented programming
+  * 1. Encapsulation - mechanism of binding the properties and the behaviour
+  *                    of the real world entity together
+  * 2. Data hiding  -
+  * 3. Polymorphism - multiple ways to perform an action
+  *                 - COMPILE TIME --> function overloading
+  *                 - RUNTIME --> function overriding
+  * 4. Inheritance  - Inheriting the capabilities of the parent into the child
+  *                   properties + behaviour
+  *                   Java doesn't support multiple inheritance in case of classes
+  * 5. Abstraction   -
+  *
+  */
+
+/**
+ * Car --> Object.java (JDK) {implicit inheritance} is not considered during multiple inheritance evaluation, otherwise we will not be able to inherit anything in Java
+ * Car --> Vehicle --> Object.java (JDK) {explicit inheritance}
+ */
+
+
+//        1. Child reference and child instance
+//        Car car = new Car();
+//        System.out.println(car.getAvgSpeed());
+//        System.out.println(car.getMileage());
+//        car.pvtFunction();
+//        car.random();
+
+//        2. Parent reference and child instance
+//        Vehicle vehicle = new Car();
+//        System.out.println(vehicle.getAvgSpeed());
+//        vehicle.random();
+//        vehicle.pvtFunction();
+//        vehicle.publicFunction();
+
+Example:
+//        Business run by father and a child ( > 50+ age  25 age)
+
+//        customer deals with father, child will do only those things which father asks him to do
+//        customer deals with child, father will not be aware of what child is doing and child can do anything
+
+
+//        3. Parent reference and parent instance
+//        Vehicle vehicle = new Vehicle();
+//        System.out.println(vehicle.getAvgSpeed());
+//
+//        vehicle.random();
+
+          Not possible
+//        4. Child reference and parent instance
+//        Car car = new Vehicle();
+//        car.random();
