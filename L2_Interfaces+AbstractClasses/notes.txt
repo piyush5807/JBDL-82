@@ -1,0 +1,32 @@
+/**
+     * Class inherits from another class
+     * Class implements an interface
+*/
+
+/**
+ * When you declare a function but not define it, it's known as abstract function
+ * i.e function that doesn't have a body are known as abstract functions
+*/
+
+/**
+ * Default or non-abstract functions in an interface are different than the default access / no access modifier
+*/
+
+/**
+    * In classes, whenever you define any variable or function, default access modifier gets attached to the variable / function
+    * In interfaces, whenever you define any function, it's access modifier is public and you cannot change that
+*/
+
+/**
+    * Implement or override
+    * You need to implement or override all the parent interface's abstract functions
+*/
+
+/**
+    * You cannot create instances of interfaces and abstract classes
+*/
+
+/**
+    * You can define a non abstract method in an abstract class but vice versa is not true i.e
+    * you can define an abstract function in a non-abstract class
+*/
