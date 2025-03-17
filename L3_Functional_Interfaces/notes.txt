@@ -1,0 +1,5 @@
+* Functional interfaces are those which have only 1 non-overriding abstract function in it
+
+// Lambda expression
+You have to write the method signature parameters and the function body, nothing else
+Lambda expressions can only be written for functional interfaces not the normal interfaces
