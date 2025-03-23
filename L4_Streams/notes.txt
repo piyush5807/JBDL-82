@@ -1,0 +1,18 @@
+** Method referencing can be used inside a lambda when the number and the order of the function arguments is same as that of the lambda input
+
+/**
+ * Streams will not at all execute without a terminal function.
+ * Every stream needs to have one terminal function for them to execute.
+*/
+
+/**
+ * Output of streams result depends on various factors:
+ * 1. Type of streams used (sequential or parallel streams)
+ * 2. Type of the terminal function --
+ * 3. Type of the data structure / collection on which we are executing (List , ... set, array, maps.. etc.)
+*/
+
+/**
+ * Short circuit terminal function - findFirst, findAny
+ * Terminal function - reduce, forEach, collect, count
+*/
