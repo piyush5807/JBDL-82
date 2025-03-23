@@ -1,0 +1,28 @@
+Final keyword
+/*
+1. Variables -
+    a. Non static variables - initialize the value either during the declaration or inside the constructor or inside a non static block (globally)
+    b. static variables - initialize the value either in the static block or during the declaration itself
+2. Methods - Final methods cannot be overridden in subclasses
+3. Classes - Final classes are those in which all the methods are by default final i.e these classes are not inheritable
+
+
+Native keyword in front of a function indicates that the implementation of that fn is defined in the OS library
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
