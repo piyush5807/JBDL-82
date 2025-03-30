@@ -1,0 +1,61 @@
+Quick recap 
+The meeting covered exception handling in Java, including try-catch blocks, checked and unchecked exceptions, and the use of finally blocks. The discussion included best practices for handling exceptions, such as proper logging and throwing techniques, as well as the implementation of custom exceptions. The class also explored the execution flow of exception handling, the hierarchy of exception classes, and concluded with information about an assignment on GitHub Classroom.
+
+Next steps
+Students to complete the previous assignment on the GitHub classroom platform.
+Instructor to add new assignments on exception handling in the GitHub classroom.
+Students to notify the instructor when they have completed an assignment if no submit button is available.
+Instructor to review submitted assignments and provide feedback.
+Students to prepare for the upcoming class on multi-threading.
+
+
+Summary 
+AI Companion for Meeting Notes
+In the meeting, Class led the discussion on exception handling and multirating. They encountered issues with adding Fathom, an AI tool, due to its non-support in webinars. Class suggested using other AI tools like Order or taking notes manually. They also discussed the possibility of using AI companion for note-taking, but it was not clear if it would work for the entire meeting duration. The conversation ended with Class turning on the AI companion for all meeting invitees to see if they would receive a meeting summary.
+
+
+Exception Handling in Java
+The class discusses exception handling in Java, focusing on the try-catch block and stack traces. The instructor demonstrates how to use try-catch blocks to handle arithmetic exceptions, such as division by zero. They explain that every try block must be followed by a catch block, where the exception can be caught and handled. The instructor shows how to print exception messages and stack traces using the printStackTrace() method. They also illustrate how stack traces can be more complex in nested function calls and recursive functions, providing examples to demonstrate how to interpret stack traces for debugging purposes. The discussion includes an explanation of pre-increment and post-increment operators and their impact on recursive function behavior.
+
+
+Java Exception Handling Syntax Explained
+Class explained the syntax of exception handling in Java, including the use of the 'exception' keyword to declare a variable that will be populated with an exception object when an exception is thrown in the 'try' block. He also clarified that the 'exception' keyword is not used to create a new object, but rather to declare a variable that will be initialized with an exception object. Class further explained the relationship between the 'exception' class and the 'arithmetic exception' class, noting that the latter is a subclass of the former. He also addressed questions about how the system finds the correct exception class to handle a thrown exception.
+
+
+Java Exception Handling Explained
+In the meeting, Class discussed the differences between checked and unchecked exceptions in Java. They explained that unchecked exceptions, such as arithmetic and null pointer exceptions, do not need to be handled and are checked at runtime. On the other hand, checked exceptions, such as file not found and input/output exceptions, must be handled to avoid compilation errors. Class also clarified that the hierarchy of exceptions in Java includes the top-level exception class, with runtime exceptions and checked exceptions as its subcategories. The conversation ended with Class emphasizing the importance of handling checked exceptions to ensure successful compilation and runtime execution of Java applications.
+
+
+Java Exception Handling Explained
+In the meeting, Sahana and Class discussed the hierarchy of exceptions in Java, with Class explaining that exceptions can either extend from the Runtime or directly from the Exception class. They also discussed the difference between checked and unchecked exceptions, with Class stating that exceptions extending from Runtime do not need to be handled. Atharva asked about the category of the Date and Time exception, to which Class clarified that it falls under the Runtime category. The team also discussed the concept of handling exceptions, with Class providing examples of how to handle exceptions in code.
+
+
+Code Execution and Exception Handling
+In the meeting, Class explained the difference between normal and abnormal execution of a code, using the example of a Java program. He clarified that a code exiting with code 0 means successful completion, while code 1 means abnormal execution due to an exception. He also explained that the stack trace is always printed last, regardless of where it is written in the code. Sugumar raised a question about handling exceptions in automation testing, to which Class responded that it depends on the test case written. Arun asked about printing to the system output after a null pointer exception, to which Class explained that it can be done but it's not the usual practice.
+
+
+System.out.println() Limitations and Exception Handling
+In the meeting, Class explained the concept of system.out.println() and its limitations, particularly when dealing with void objects. Karhad and Vootla asked questions about the order of operations and the handling of exceptions. Class clarified that the system.out.println() function would not execute if an exception occurred, and it would only print the stack trace at the end. Class also mentioned that it's not a good practice to use stack traces in production-level codes due to memory consumption. Vootla asked about handling more than two exceptions, to which Class promised to address in the next part of the discussion.
+
+
+Exception Handling in Java
+The class discusses exception handling in Java, focusing on different types of exceptions and how to handle them using try-catch blocks. They demonstrate that when multiple exceptions are possible, the order of catch blocks matters. The class explains that more specific exceptions should be caught before more general ones, as the first matching catch block will be executed. They also show how to use a generic Exception catch block to handle any unexpected exceptions. The discussion includes examples of handling arithmetic exceptions, file not found exceptions, and SQL exceptions, as well as demonstrating how null pointer exceptions are caught by a general Exception block.
+
+
+Exception Handling in Java
+The class discusses exception handling in Java, focusing on the try-catch-finally structure. They explain that the finally block is optional but always executes, whether an exception occurs or not. The order of execution is try, catch (if an exception occurs), and then finally. The class demonstrates that a try block can be followed by either a catch or finally block, but having only a try-finally without catch is not recommended. They explain that the main use case for finally is to close resources, such as file streams, regardless of whether an exception occurs. The class also covers throwing exceptions to the calling function using the 'throws' keyword in the method signature. They advise against nesting too many try-catch blocks and suggest suppressing less critical exceptions in the parent function rather than throwing them further.
+
+
+Code Execution and Exception Handling
+In the meeting, Class discussed the execution of code segments and the handling of exceptions. The team debated whether certain lines of code would be printed or not, with some lines being dependent on the occurrence of exceptions. Class explained the concept of 'throw' as a return statement that throws an exception to the calling function, and how the 'finally' block is executed regardless of whether an exception is thrown or not. The team also discussed the order of execution in the 'catch' and 'finally' blocks. Class demonstrated the execution of code in a debug environment to illustrate the flow of execution and the handling of exceptions. The team concluded that if an exception is thrown from the 'finally' block, the code after it will not be executed.
+
+
+Java Exception Handling Best Practices
+In the meeting, the team discussed the handling of exceptions in Java programming. They explored the behavior of exceptions when thrown from different parts of the code, such as the catch and finally blocks. The team also discussed the importance of notifying the caller about potential exceptions using the throws keyword. They concluded that the best practice is to handle exceptions appropriately, rather than simply throwing them back to the caller. The team also touched on the concept of sneaky exceptions in the Spring Boot library.
+
+
+Java Exception Handling Best Practices
+The class discusses exception handling in Java, focusing on best practices for logging and throwing exceptions. The instructor emphasizes the importance of printing stack traces at the appropriate level, typically at the top-level function, to avoid redundancy and save storage. They explain the difference between 'throw' and 'throws' keywords, with 'throw' used to return an exception and 'throws' used in method signatures to notify callers of potential exceptions. The class also covers custom exceptions and their implementation as runtime or checked exceptions. The instructor mentions an assignment on GitHub Classroom and explains how students can submit their work and receive feedback.
+
+
+Note: AI can make mistakes. Review for accuracy.
