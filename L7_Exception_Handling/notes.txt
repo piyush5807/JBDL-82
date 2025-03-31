@@ -1,0 +1,33 @@
+/**
+     * try --> (if exception) --> catch --> finally
+     * try --> finally
+*/
+
+/**
+     * Catch block becomes optional when finally block is defined, otherwise if finally is not defined then catch is mandatory
+*/
+
+/**
+     * Throws is added to the method signature to notify the caller of any exception that might be thrown from this function
+     * throw is keyword similar to return which means return or throw an exception from a certain block
+*/
+
+/**
+    Any exit code except 0 means the process terminated abnormally
+*/
+
+Example: Real life scenario where finally throws an altogether different exception and suppressing the catch block exception
+/**
+     * CEO --> We are able to complete the work as the deadline is strict
+     * Manager --> Assigned Task A --> Reportee --> Reports to the manager that he was not able to do the work as he was ill
+     * Reportee
+*/
+
+
+/**
+    * try --> catch --> finally
+*/
+
+/**
+    * Try with resources only work for classes which are implementing autcloseable interface
+*/
