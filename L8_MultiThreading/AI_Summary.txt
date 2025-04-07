@@ -1,0 +1,52 @@
+Quick Recap
+This meeting covered the concept of threads in computing, focusing on their creation, execution, and management in Java. The discussion included explanations of concurrent and parallel execution, different methods of creating threads, and the use of parallel streams for efficient task processing. The class also explored thread naming conventions, the importance of avoiding thrashing, and the use of join() method for creating dependencies between threads, concluding with recommendations for further study resources on multithreading.
+
+Next steps
+Students to review multi-threading concepts covered in class, including thread creation methods and the difference between parallel and concurrent execution.
+Students to practice creating threads using both Runnable interface and Thread class extension.
+Students to study the join() method for thread synchronization.
+Students to explore Baeldung.com for additional resources on multi-threading in Java.
+Instructor to cover synchronized keyword, volatile keyword, and coding questions on multi-threading in the next class.
+Instructor to publish the class code on GitHub.
+Students to prepare for 1-1.5 more classes on multi-threading topics.
+
+
+Summary 
+Threads in Computing Basics
+The class discusses the concept of threads in computing, explaining how they allow for concurrent execution of tasks. The instructor uses analogies to illustrate how multiple threads can run on different processor cores, enabling parallel processing. They explain that when there are more threads than available cores, a CPU scheduler manages context switching to give each thread execution time. The class covers the differences between concurrent and parallel execution, and how Java creates a default main thread for code execution. The instructor demonstrates how to view thread information in a debugger and explains when creating additional threads is beneficial for running independent tasks simultaneously.
+
+
+Creating and Starting Threads in Java
+The class discusses how to create and start threads in Java. The Thread class, which has been part of Java since version 1.0, has multiple constructors. Creating a new Thread object does not actually create a thread on the hardware; this happens when the start() method is called. The start() method internally calls a native method start0(), which creates the thread on the hardware. The run() method, which comes from the Runnable interface, is where the actual logic for the thread is defined. If no Runnable is provided or the run() method is not overridden, the thread will be created but will not execute any code. The instructor emphasizes the importance of defining the run() method to avoid wasting resources by creating threads that do nothing.
+
+
+Java Thread Creation and Execution
+The class discusses thread creation and execution in Java. The instructor demonstrates how to identify the current thread using Thread.currentThread() and explains the thread naming convention. They create multiple threads and show that while threads are created sequentially, their execution order is non-deterministic as they run in parallel. The instructor also clarifies that a thread cannot be started more than once and that the main thread is always the starting point of a Java program, with other threads created from it belonging to the main thread group.
+
+
+Java Thread Naming and Execution
+In the meeting, the team discussed the naming and execution of threads in a Java program. They explored the possibility of naming threads as "main" and how the Java Virtual Machine (JVM) handles thread naming and reference numbers. The team also discussed the concept of parallelism and how it depends on the underlying hardware and JVM version. They concluded that creating a new thread inside another thread can lead to an infinite loop and suggested creating subtasks at the same hierarchy level for parallel execution. The team also touched upon the idea of creating a thread that is the head of other threads, but it was not fully explored.
+
+
+Parallel Streams in Java Explained
+The class discusses parallel streams in Java, explaining how they utilize multi-threading. Using a simple example of printing numbers, the instructor demonstrates the difference between sequential and parallel streams. In parallel streams, different threads from a ForkJoinPool execute various parts of the stream operation. The class also explores the reuse of threads in parallel processing and how the number of available processors affects thread allocation. The discussion concludes with an explanation of how parallel processing can significantly reduce execution time for certain tasks, such as reading multiple files simultaneously.
+
+
+Concurrent Execution With ForkJoinPool
+In the meeting, Class explained the concept of concurrent execution using the example of a teacher assigning cleaning tasks to students. He differentiated between two approaches: one where 20 threads are created and assigned tasks, and another where 10 threads are created and assigned tasks, with the remaining threads waiting for their turn. He emphasized that the second approach, using an abstraction like the ForkJoinPool, is more efficient as it avoids context switching and allows for task reassignment to the same threads. He also clarified that the number of available cores in the processor determines the maximum number of threads that can be executed concurrently.
+
+
+Thrashing and Thread Creation Techniques
+In the meeting, Class discussed the concept of thrashing, a situation where context switching time exceeds execution time, leading to poor system performance. They emphasized the importance of avoiding thrashing in applications, especially for compute-heavy tasks. Class also explained two ways to create a thread: using the Runnable interface and by extending the Thread class. They clarified that a static class will only be loaded after the outer class is loaded, and demonstrated how to create a thread using a private static class.
+
+
+Threads in Programming: Choice and Execution
+In the meeting, Class explained the concept of threads in programming, specifically focusing on the difference between extending the Thread class and implementing the Runnable interface. Class clarified that the choice between the two approaches depends on the need for multiple inheritance and the specific requirements of the program. The discussion also covered the importance of defining the run function when extending the Thread class to ensure proper execution of the program.
+
+
+
+Multithreading Concepts and Thread Behavior
+The class discusses multithreading concepts, focusing on the behavior of threads in different contexts. They clarify that when extending the main thread, it still prints as the main thread because the code is executing in the main function, not in a separate run function. The instructor demonstrates the use of the join() method to create dependencies between threads, showing how it can be used to make the main thread wait for a child thread to complete. They also address a question about handling pop-ups in web automation using multithreading. The class concludes with recommendations for further study resources on multithreading, particularly mentioning baeldung.com as a valuable resource.
+
+AI can make mistakes. Review for accuracy.
+

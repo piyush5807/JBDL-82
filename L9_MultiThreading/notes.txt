@@ -1,0 +1,14 @@
+** Never call thread.start() on a thread which is already running
+** Never call thread.run() for creating a new thread because it doesn't have any start0() native function call, so a new thread will not be created on the underlying infra
+
+** Application will continue to run as long as there's atleast 1 foreground/ non-daemon thread running
+
+/**
+     * Child class overridden function cannot throw a checked exception if the
+     * parent class function doesn't throw an exception
+     *
+     * Runnable obj = new MyThread();
+     * obj.run()
+
+*/
+

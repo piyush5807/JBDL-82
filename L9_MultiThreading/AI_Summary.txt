@@ -1,0 +1,55 @@
+Quick recap 
+The class discussed implementing a multi-threaded solution to calculate factorials of large numbers using Java's BigInteger class, and the importance of correctness over optimization in multithreading. They also explored the limitations of throwing checked exceptions from child classes, the execution order of the code, and the advantages and potential pitfalls of multi-threaded programming in Java. The class also covered the implementation of a multi-threaded code using Java's ExecutorService, the functionality of the shutdown method in the executor service, and the concepts of foreground and background threads.
+
+
+
+Next steps
+Students to review and understand the concepts of demon and non-demon threads.
+Students to practice creating and using ExecutorService for multi-threaded programming.
+Instructor to cover parallel streams and synchronized keyword in the next Saturday class.
+Instructor to cover file handling and any remaining core Java topics in the next Sunday class.
+Instructor to start Maven and Spring Boot topics in two weeks.
+Instructor to add new assignments before the next class.
+Instructor to review previously submitted assignments.
+Instructor to publish meeting notes and AI summaries on GitHub for L8 (yesterday's class) and today's class.
+
+
+Summary 
+
+Implementing Multi-Threaded Factorial Calculation in Java
+The class discusses implementing a multi-threaded solution to calculate factorials of large numbers using Java's BigInteger class. They create a custom thread class called MyThread that extends the Thread class. Each thread calculates the factorial of a specific number passed to it through the constructor. The main function creates an array of MyThread objects, one for each number in the input list, and starts them. The run method of each thread calls a calculate_factorial function and prints the result. The output shows correct factorial calculations but in a non-sequential order due to the concurrent execution of threads. The class also mentions timing the execution to compare performance with the sequential version.
+
+
+Multithreading in Java: Proper Execution
+The class discusses multithreading in Java, focusing on how to properly execute and manage multiple threads. The instructor demonstrates creating threads to calculate factorials, showing how the order of execution can vary when threads run in parallel. They then address issues with retrieving results prematurely and explain the use of the join() method to ensure thread completion before accessing results. The importance of correctness over optimization is emphasized, and the instructor shows how improper use of join() can lead to sequential rather than parallel execution. The class also covers topics such as exception handling in threads, the mechanics of the join() method, and considerations for shared resources in multithreaded environments.
+
+
+Checked Exceptions in Child Classes
+In the meeting, the class discussed the limitations of throwing checked exceptions from child classes when the parent class does not handle them. They explained that this is due to the ambiguity that arises when creating an object with a parent reference and calling the instance of the child class. The class also explored the possibility of throwing unchecked exceptions from the child class, which is allowed. They demonstrated this by throwing a runtime exception from the child class and observed that the exception was not caught in the catch block of the main function. The class concluded that the run function does not return the exception to the main function, which is why the exception was not visible.
+
+
+Execution Order of Code in Java
+In the meeting, Class explained the execution order of the code, emphasizing that the main function calls the start function, which in turn calls the start 0 function. This start 0 function is a native call that creates a new thread. Class also clarified that the run function is not directly called by the main function, but is called by the start 0 function. He further explained that the run function is a callback function that defines the code to be executed in the new thread. Class also discussed the importance of not calling the run function directly, but instead using the start function to create a new thread. He also mentioned that the start 0 function is specific to Java and may not be the same for other languages like Python or Nodejs.
+
+
+
+Multi-Threaded Programming in Java
+The class discusses multi-threaded programming in Java, focusing on the advantages and potential pitfalls. They demonstrate how creating multiple threads can significantly reduce execution time compared to sequential code, using an example with nine threads. The instructor explains that while this approach works well for small numbers of threads, it can become inefficient with larger numbers due to context switching. They introduce the concept of thread pool executors as a solution, which create a fixed number of threads based on available processors and assign tasks efficiently. The class emphasizes the importance of careful thread creation and suggests using thread pool executors when unsure about the optimal number of threads to create.
+
+
+Multi-Threaded Code Implementation in Java
+In the meeting, Class discussed the implementation of a multi-threaded code using Java's ExecutorService. They created a new fixed thread pool of size 10 and submitted tasks to it, which were then executed in parallel. The tasks were defined as a callable function that returned a result, which was then collected into a list. The code was tested and the results were printed. The team also discussed the use of the Future class to wait for the computation to complete and retrieve the results. The code was run successfully and the results were verified.
+
+
+Executor Service Shutdown and Threads
+In the meeting, Class discussed the functionality of the shutdown method in the executor service, which initiates an orderly shutdown of previously submitted tasks but does not wait for them to complete. Class also explained the difference between the shutdown and await termination methods, with the latter blocking until all tasks have completed. The team also explored the use of lambda functions for simplifying code. Class then introduced a new inner class, "MyThread", to demonstrate the concept of threads and their execution. The team discussed the behavior of the main thread and its impact on the application's continuation, concluding that the application will continue to run as long as there is at least one foreground thread running.
+
+
+Foreground and Background Threads Explained
+In the meeting, Class explained the concepts of foreground and background threads, also known as non-demon and demon threads. Class clarified that by default, any thread created is a non-demon thread, which is a foreground thread. However, a thread can be made a demon thread, which is a background thread, but this should only be done for logical reasons. Class also mentioned that the Java application will not wait for any demon threads to run, it only waits for non-demon threads. The conversation ended with Class emphasizing the importance of understanding these concepts when creating threads.
+
+
+Core Java Curriculum Overview
+The instructor outlines the agenda for the upcoming week, including covering parallel streams, synchronized keyword, and file handling to complete the core Java curriculum. They announce that Maven and Spring Boot will be introduced the following week. The class discusses multithreading, with the instructor explaining how to create and use multiple threads for different operations. They also touch on demon threads, thread safety, and the relationship between processes and threads. The instructor commits to reviewing assignments, publishing meeting notes on GitHub, and addressing any remaining doubts about core Java concepts in the next session.
+AI can make mistakes. Review for accuracy.
+
