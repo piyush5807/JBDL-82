@@ -1,0 +1,73 @@
+Quick recap
+The meeting focused on parallel streams in Java, discussing their behavior, implementation, and potential challenges. The class explored the differences between sequential and parallel processing, demonstrating various scenarios and emphasizing the importance of thread safety and appropriate data structures. They also covered the limitations of parallel streams, concluding that they are not always beneficial for performance optimization and that careful consideration is needed when choosing between sequential and parallel approaches.
+
+
+Next steps
+Students to review and practice parallel streams concepts covered in class.
+
+Students to prepare questions on synchronization and thread safety for next class.
+
+Instructor to cover synchronization and thread safety examples in the next class.
+
+Instructor to start covering Maven in Sunday's class.
+
+Instructor to push the class code and AI summary to GitHub.
+
+Prashant to ask his interview question on streams in the next class.
+
+Instructor to reply to Prit's WhatsApp message.
+
+Summary
+
+Parallel Streams in Java Processing
+
+The class discusses parallel streams in Java, focusing on a problem to find the first even number in a list. The instructor demonstrates the difference between sequential and parallel stream processing. In sequential processing, only the necessary elements are evaluated due to short-circuiting. For parallel streams, the instructor explains that the number of elements processed and the order of processing are non-deterministic. However, the final output (the first even number) will always be correct due to the ordered nature of the list data structure used.
+
+
+Parallel Streams Determinism and Processing
+
+The class discusses the behavior of parallel streams in Java, focusing on the `findFirst()` operation. They explain that the output will always be deterministic (2 in this case) because it depends on the terminal function, not the stream type. However, the number of elements processed by the filter is non-deterministic in parallel streams. The class demonstrates that all elements before the first even number in the original list must be computed before returning a result. They also note that the behavior may vary slightly depending on the Java version used, with newer versions potentially processing more elements than necessary.
+
+
+Parallel Streams in Java Programming
+
+The team discussed the use of parallel streams in Java programming, focusing on the impact of the data structure type, stream nature, and terminal function on the output. They explored the concept of deterministic and non-deterministic results, and how these are influenced by the type of stream and terminal function used. The team also discussed the role of the main thread in parallel stream execution, and how it can impact the output. They concluded that the output depends on multiple factors, including the data structure type, stream nature, and terminal function.
+
+
+Implementing Parallel Processing With Threads
+
+The class demonstrates how to implement parallel processing using threads in Java. They create a custom Runnable class to check if a number is even, then create and start threads for each number in a list. The code includes a method to find the first even number, using threads to check numbers concurrently. However, they encounter issues with accessing private variables and struggle with the correct syntax for getters. The example highlights the differences between this approach and using streams, showing that threads continue executing even after finding the first even number, unlike the stream implementation.
+
+
+Parallel Stream Simulation and Thread Joining
+
+In the meeting, Class explained the iterative approach to simulating parallel streams, using separate functions to mimic the phases of the stream. Atharva and Vishnu clarified the role of the joint pool executor in parallel streams. Class demonstrated the importance of joining threads to avoid incorrect results, using a sleep function to illustrate this. The team also discussed the non-deterministic nature of the findAny method in parallel streams, with the output varying each time.
+
+
+Deterministic Results in Parallel Streams
+
+In the meeting, Class discussed the importance of using the correct identity element in parallel streams to ensure deterministic results. They demonstrated this by running a code that should have produced a consistent output, but due to incorrect identity element, the output was non-deterministic. Class explained that the behavior might change if the number of elements in the list is increased, as the number of possible combinations with the identity element would also increase. They emphasized the need to apply the correct identity element in parallel streams to maintain deterministic results.
+
+
+Parallel Streams and Non-Thread-Safe Data
+
+The class discusses the challenges of using parallel streams with non-thread-safe data structures. They demonstrate this by attempting to remove duplicates from a list of cities using parallel streams. The code leads to inconsistent results, sometimes producing duplicate entries or missing cities altogether. The instructor emphasizes that operations on non-thread-safe data structures should not be used with parallel streams, as it can lead to race conditions and unexpected behavior. Instead, they recommend using built-in functions or thread-safe alternatives when working with parallel streams.
+
+
+Parallel Streams: Efficiency and Use Cases
+
+The class discusses the use of parallel streams in Java, emphasizing that they are not always beneficial for performance optimization. The instructor explains that parallel streams can be inefficient for small datasets, when order is important, or when frequent writes occur. Using an example of finding the first line starting with a vowel in a large file, the class explores scenarios where sequential streams might be more efficient than parallel streams. The instructor concludes that for finding the first occurrence, sequential streams are generally better, but for finding any occurrence, parallel streams would be more advantageous.
+
+
+Java Parallel Streams and Thread Safety
+
+In the meeting, the team discussed the differences between parallel and sequential streams in Java. They noted that parallel streams are not always beneficial and can be resource-intensive. The team also discussed the importance of thread safety and the use of thread-safe data structures like the concurrent hashmap. They agreed to cover synchronization in the next class and start with Maven. The team also discussed the potential issues that can arise when multiple threads try to access a shared resource simultaneously.
+
+
+Thread Safety in Multi-Threaded Programming
+
+The class discusses thread safety and critical sections in multi-threaded programming, using a bank account example. The instructor explains how race conditions can occur when multiple threads access shared resources simultaneously, potentially leading to inconsistent results. The concept of critical sections is introduced as a way to ensure thread safety by allowing only one thread to execute in the shared resource area at a time. The instructor also mentions that in Java, the 'synchronized' keyword is used to create critical sections. The class concludes with a brief discussion on thread-safe data structures and how their implementation determines their thread safety.
+
+
+
+Note: AI can make mistakes. Review for accuracy.
