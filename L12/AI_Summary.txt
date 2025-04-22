@@ -1,0 +1,56 @@
+Quick recap
+
+The instructor set up a core Java project to demonstrate database connectivity, encountered some issues with MySQL versions and passwords, and successfully created a new database and table. The class discussed the hierarchy of MySQL, the structure of the JDBC URL, and the need for database-specific drivers. They also explored the use of Maven and Gradle for project management, the significance of unique names for projects, and the process of adding dependencies in a project.
+
+
+Next steps
+Students to create a Maven project and experiment with adding dependencies to pom.xml.
+
+Students to explore the local Maven repository structure on their machines.
+
+Students to research and try setting up a remote Maven repository using providers like Nexus, JFrog, or GitHub.
+
+Students to study Maven lifecycle phases and plugins before the next class.
+
+Students to review the basics of client-server architecture and APIs in preparation for upcoming Spring Boot lessons.
+
+Instructor to push today's code to the GitHub repository.
+
+Students to review the GitHub repository link shared in the chat for access to course materials.
+
+Summary
+
+
+Setting Up Core Java Project
+The instructor begins setting up a core Java project to demonstrate database connectivity. They attempt to install and configure MySQL on their local machine, encountering some issues with versions and passwords. After resolving these, they successfully access the MySQL shell and create a new database called "jbdl_test_1". The instructor then creates a table called "students" within this database, with columns for ID (integer, primary key) and name (varchar). They explain that this setup will be used to demonstrate how to connect a Java application to a MySQL database without using Maven.
+
+
+Connecting Java App to MySQL Database
+The class discusses how to connect a Java application to a MySQL database server. The instructor explains the need for three key pieces of information: the URL (or host), the port, and the database name. They clarify that the default MySQL port is 3306 and the local host IP address is 127.0.0.1. The class then explores the hierarchy of MySQL, with servers containing multiple databases, and databases containing multiple tables. The instructor introduces the DriverManager class from Java SQL and its getConnection method for establishing a database connection. They explain the structure of the JDBC URL and the meaning of JDBC as Java Database Connectivity, a protocol for interaction between Java applications and databases.
+
+
+JDBC Connectivity and SQL Databases
+The class discusses relational and non-relational databases, focusing on SQL databases and JDBC connectivity. The instructor explains that JDBC is a protocol for connecting Java applications to relational databases, and demonstrates how to create a connection string using a URL with protocol, sub-protocol, and sub-name components. They then show how to create a database connection, create a statement, and execute a SQL query to create a table. The instructor highlights the need for database-specific drivers, which are not included in the JDK, and demonstrates how to add the MySQL driver as an external library to resolve connection issues.
+
+
+Maven Simplifies Java Project Management
+In the meeting, Class discussed the challenges of using external libraries in Java applications, particularly when deploying to a cloud server. They introduced Maven as a project management tool that simplifies the process by reducing manual tasks and potential errors. Class demonstrated how to create a new project using Maven and explained its benefits, such as automatically downloading and resolving dependencies. They also touched on the use of Gradle, another build tool, and its differences from Maven.
+
+
+Unique Names and Project Structure
+In the meeting, Class explained the use of unique names for projects, including group id and artifact id, and their significance in identifying the organization and project functionality. Class also discussed the structure of package names and how they relate to group ids. The meeting also covered the use of Maven and Gradle for building projects, with Maven fetching dependencies from Maven Central and Gradle from Maven Central as well. Class emphasized the importance of the pom.xml file in Maven projects and its structure.
+
+
+Adding Dependencies in Maven Projects
+In the meeting, Class discussed the process of adding a dependency in a project. He explained that to add a library, one needs to find out the group ID and artifact ID of that library. He also mentioned that Maven Central Repository is user-unfriendly and suggested using the Mvn repository for ease of use. Class demonstrated how to add a MySQL connector dependency and how Maven downloads the necessary files from the central repository. He also clarified that Maven downloads both the .jar and .pom files for each dependency. The conversation ended with a discussion on the types of repositories in Maven, including the central repository and the local repository.
+Types of Repositories in Software Development
+
+
+The class discusses three types of repositories: central, local, and remote. Central repositories are publicly accessible on the internet and contain open-source projects. Local repositories reside on the user's machine and store downloaded dependencies to reduce latency and avoid redundant downloads. Remote repositories are used for proprietary software and are accessible only to authenticated users within an organization. The instructor explains how Maven manages dependencies across projects and demonstrates how to check for existing dependencies in the local repository. The class also covers the structure of local repositories and the benefits of using remote repositories for collaboration and continuous integration in software development.
+
+
+Maven Dependency Resolution and Remote Repos
+The class discusses how Maven resolves dependencies. Maven first checks the local repository for a dependency. If not found locally and a remote repository is configured, it checks there next. If the dependency is not in the remote repository or no remote is configured, Maven checks the central repository. If the dependency is found, it is copied to the local repository. The instructor explains the trade-offs of using a remote repository, which can save time but increases storage costs. The class also covers how to configure a remote repository using a settings.xml file and mentions different remote repository providers like JFrog, Nexus, and Sonatype.
+
+
+Note: AI can make mistakes. Review for accuracy.
