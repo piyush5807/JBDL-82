@@ -1,0 +1,76 @@
+Quick recap
+
+The meeting covered various aspects of Maven, including its project structure, lifecycle, and usage in Java development. Discussions included connecting to databases, managing dependencies, creating and running projects, and handling different Maven phases such as clean, compile, test, package, and install. The session also touched on topics like UTF-8 encoding, artifact creation, and the use of Maven plugins, concluding with an introduction to upcoming topics on request-response, APIs, and client-server architecture.
+
+
+
+Next steps
+
+Students to practice creating Maven projects and understanding the project structure.
+
+Students to familiarize themselves with Maven lifecycle phases and their purposes.
+
+Students to experiment with different Maven commands (e.g., clean, compile, test, package, install) to understand their effects.
+
+Students to explore Maven plugins and their roles in the build process.
+
+Students to review the concept of local, remote, and central repositories in Maven.
+
+Students to prepare for upcoming topics on APIs, request-response models, and client-server architecture.
+
+Instructor to push the code and notes from the session to GitHub for student reference.
+
+
+
+Summary
+
+Maven Project Structure and Usage
+In the meeting, Class explained the structure of a Maven project, including the source and test directories, and how to start with Maven. They also discussed the importance of the pom.xml file as the single point of entry for Maven to parse the project from. Class also clarified that Maven is not mandatory to use, but it is widely used due to its user-friendly nature. They also touched on the different types of repositories in Maven, such as central and local repositories. Class further explained the life cycle of Maven and how it can work on its own without an IDE. They also emphasized the importance of understanding the commands and the depth of the framework.
+
+
+Connecting Database With MySQL Driver
+In the meeting, the class discussed how to connect a database using the last lecture's method. They encountered an "access denied" error, which was resolved by removing and reinstalling MySQL. The class also explained the need for a driver to implement the interface for connecting to a database. They demonstrated how to change the driver from Postgres to MySQL and how to handle version compatibility issues. The class also discussed the use of Maven for managing dependencies and how to handle cache issues in the IDE.
+
+
+Maven Artifact and Group Id
+In the meeting, Class explained the concept of artifact and group id in Maven projects. He clarified that the artifact id is the name of the project, while the group id is the organization name. He also demonstrated how to create a simple Maven project and how to resolve version conflicts when two dependencies bring different versions of the same library. Class also showed how to install Maven on different operating systems and how to configure the bin folder in the environment variables. He further explained the dependency tree and how Maven resolves conflicts by omitting one of the versions.
+
+
+UTF-8 Encoding for URLs and Emails
+In the meeting, Class explained the properties of repositories, including the source and target versions for Java code compilation. He also discussed the use of UTF-8 encoding for URLs and email addresses. Atharva asked about the full form of UTF, which Class explained as Unicode Transformation Format. Class also demonstrated how to handle special characters in URLs and email addresses using UTF-8 encoding. Rishav asked if this was specific to Gmail, to which Class responded that it was not sure if it worked with other email providers.
+
+
+Maven Life Cycle and Neural
+In the meeting, Class discussed the Maven life cycle, focusing on the clean, dependencies, and properties phases. Class explained that the clean phase deletes the target folder, while dependencies and properties are done. The parent dependency was not covered yet. The discussion then shifted to the life cycle of neural, starting with the clean phase. Class explained that the clean phase deletes the target folder, which contains bytecode and other information. The validate phase was also discussed, which is a helper phase that checks the pom.xml for proper tags. Class emphasized that the clean phase is explicit and needs to be specified for the cleaning to happen. The conversation ended with Class preparing to discuss the compile phase, which compiles all the files.
+
+
+Maven Compilation and Test Process
+In the meeting, Class explained the process of compiling files in the main directory and the test directory using Maven. They discussed how a compilation error in the test directory would not be detected during the compile phase, but would be identified during the test phase. Class also clarified the difference between the main directory and the test directory, stating that the main directory is for source code and the test directory is for unit tests. They demonstrated how to run Maven tests and how to identify which test cases have failed. Class also mentioned that the test phase not only compiles the test classes but also runs the test cases. They discussed the various frameworks for running unit test cases, such as JUnit, Mockito, and Spring Runner.
+
+
+Maven Jar File Creation Process
+In the meeting, Class explained the process of creating a jar file using Maven. He clarified that the jar file is a packaging of all the classes and files in a project, which can be used elsewhere for deployment or integration into another project. He demonstrated how to run Maven package and how it creates a jar file with a specific name. He also explained the difference between Maven package and Maven clean package, stating that the latter deletes the existing target folder before creating a new jar file. Class emphasized the importance of the clean phase in managing jar files.
+
+
+Maven Package vs Install Commands
+In the meeting, Class explained the difference between Maven's package and install commands. The package command creates a JAR file, while the install command copies the JAR file from the target folder to the local repository. This distinction was clarified using the example of a project called "L. 13 Maven Final". The meeting also touched on the use case of installing a project in the local repository, which is not typically done for pushing to the 
+Maven Central Repository.
+
+
+New Project: M. 13 Calculator
+In the meeting, Class discussed the creation of a new project called M. 13, calculator, which would include a Main dot Java file with four functions. The functions were defined as public static and included operations such as addition, multiplication, subtraction, and division. Class also mentioned the possibility of creating a command line application where users could input their operations and numbers. The goal was to utilize functions from a different project, L. 13, calculator, instead of using operators directly. Class also mentioned the possibility of making the operations more complex in the future.
+
+
+Maven Sync and Dependency Management
+In the meeting, Class discussed the process of importing libraries in organizations and the potential issues that can arise. They also explored the Maven Sync process and how it resolves dependencies. Class explained that Maven Sync is like Maven validated and not related to compilation. They also discussed how to resolve errors in Maven Sync and the importance of adding dependencies to the local repository. The conversation ended with a demonstration of how to use a different project as a dependency in a Java project.
+
+
+Maven Lifecycle and Deployment Process
+In the meeting, Class explained the Maven lifecycle, including the phases of compile, test, package, verify, install, deploy, site, pre-site, and post-site. Rishav asked about the difference between Maven install and package, and Class clarified that Maven install includes all the phases, while package only includes the compile and test phases. Class also explained the role of the site and deploy phases in Maven, which are responsible for deployment and pushing the artifact to a remote repository. Rishav asked about the error he encountered when running Maven deploy, and Class explained that it was due to the absence of a remote repository URL. Class also discussed the use of Maven plugins and how they can be used to customize the build process.
+
+
+Maven Lifecycle and Plugin Execution
+In the meeting, Class explained the concept of Maven, a build tool, and its lifecycle. He discussed how a lifecycle is a set of goals that a plugin tries to achieve. He used examples like the clean lifecycle, which deletes the target folder, and the compile lifecycle, which compiles the files in the main directory. He also mentioned the install lifecycle, which installs the files, and the deploy lifecycle, which deploys the files. He further explained how plugins can be added to a project and how they execute their goals during a lifecycle. He also touched upon the concept of shaded jars and how they are created using the Maven shared plugin. He ended the conversation by stating that they will start with basic request-response, APIs, and client-server architecture from the next day.
+
+
+AI can make mistakes. Review for accuracy.

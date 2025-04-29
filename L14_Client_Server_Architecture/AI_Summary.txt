@@ -1,0 +1,62 @@
+Quick recap
+
+The class discussed the difference between standalone applications and server applications, with a focus on the continuous operation of servers and their accessibility via IP addresses. They also explored the concept of Content Delivery Networks (CDNs) and Load Balancers, and the role of servers and clients in a network. Additionally, the class delved into the concept of server-side applications and frameworks, microservices, and the functionality of the network tab in a web browser.
+
+Next steps
+Class to push yesterday's code to the repository.
+
+Class to start teaching about creating a simple Spring Boot application in the next class.
+
+Subrat to try implementing the @CrossOrigin annotation in the Spring Boot controller to resolve CORS issues.
+
+Class to share resources on how to enable CORS in Spring Boot.
+
+Class to cover Hibernate and Spring MVC topics in 3-4 weeks.
+
+Summary
+
+Standalone vs Server Applications Explained
+
+The class discusses the difference between standalone applications and server applications. Standalone applications execute a set of instructions and then stop, while server applications run continuously and listen for client requests. The instructor explains that servers operate on specific ports, are accessible via IP addresses, and can handle multiple client connections. Examples of different types of servers are provided, including application servers, file servers, and database servers. The instructor demonstrates the concept using Redis and MySQL servers to show how clients interact with running servers and what happens when servers are stopped or restarted.
+
+Servers and Load Balancers Explained
+
+Class discussed the concept of servers and their role in providing a continuous user experience. They explained that servers run continuously, even during maintenance windows, to ensure the website is always available. Class also clarified that multiple clients can connect to the same server from the same port at a time. They used Amazon as an example to illustrate how a server handles a large number of requests per second. Class also introduced the concept of a load balancer, which distributes requests evenly among multiple servers to prevent overloading. They concluded by stating that while there can be multiple load balancers, for large companies like Amazon, a single load balancer may not be sufficient.
+
+
+CDNs and Load Balancers Explained
+
+Class discussed the concept of Content Delivery Networks (CDNs) and Load Balancers. He explained that CDNs are servers deployed near users' locations to reduce response time and improve user experience. He also mentioned that CDNs can handle both static and dynamic content. Class further explained that Load Balancers are applications that distribute requests among multiple servers, improving efficiency and reducing server overload. He used the example of Google.com to illustrate how a domain name is resolved to an IP address through a Load Balancer. Class also touched on the complexity of remembering IP addresses and the use of DNS to simplify this process.
+
+
+Servers and Clients in Networks
+
+Class discussed the concept of servers and clients in a network. He explained that a server is an application that runs continuously and responds to client requests. He also mentioned that companies like Amazon and Google use multiple servers to handle a large number of user requests simultaneously. Class further explained that the number of servers needed depends on the amount of data and the querying strategy used. He also touched on the challenges of scaling infrastructure and data as the number of users increases.
+
+
+Frameworks and Client-Server Application Structure
+
+The class discusses the concept of server-side applications and frameworks. The instructor explains that frameworks like Spring Boot, Node.js, Django, and Ruby on Rails are built on top of programming languages to provide boilerplate code and improve productivity. These frameworks allow developers to focus on business logic rather than spending time on basic server functionalities. The discussion then moves to the structure of client-server applications, including front-end and back-end components, databases, caching systems, and data warehouses. The instructor also touches on the differences between full-stack, back-end, and front-end developers, and explains the concept of APIs as contracts between client and server applications.
+
+
+Microservices and API Endpoint Communication
+
+In the meeting, Class explained the concept of microservices and their role in handling requests and responses within a system. They discussed how a service can expose an API endpoint for communication and how authentication can be a separate service. Class also demonstrated how to use the Chrome browser's inspect tool to debug and understand the communication between front-end and back-end services. They emphasized the importance of this tool for back-end developers in debugging issues.
+
+
+Web Browser Network Tab Explained
+
+In the meeting, Varan explained the functionality of the network tab in a web browser, which shows all requests made from the front end to the back end. He used Google's search engine as an example, demonstrating how the browser makes an API call to search for a query. Varan clarified the difference between a web service and an API, and how APIs are exposed via web services. He also discussed how companies try to hide their API endpoints to prevent users from accessing them directly. Prashant asked about hitting the API from Postman, and Varan explained how to do that using the browser's copy function. Varan also explained the concept of epoch time, which is used to represent dates in a large number format.
+
+
+API Call Analysis and Debugging
+
+In the meeting, the class discussed the request method, status code, payload, preview, and response in API calls. They also touched on the network tab, performance, memory, application, privacy and security, and the recording feature. The class explained how the network tab can be used to analyze page load and identify slow APIs. They also demonstrated how to use the throttling option to simulate different network conditions. The class concluded by emphasizing the usefulness of these tools in debugging and understanding integrations with front-end applications.
+
+
+Inspecting Elements and Spring Boot Basics
+
+In the meeting, Class explained how to inspect elements in different browsers, including Safari and Firefox. He also discussed the positioning of the developer tools dock and how to view it as a separate tab. Class mentioned that he would push the previous day's code for access. He also introduced the topic of creating a server application and learning about Spring Boot. Subrat asked about configuring CORS in Spring Boot, and Class explained that it needs to be done on the backend side. He also mentioned that he would share the code for enabling CORS in Spring Boot.
+
+
+AI can make mistakes. Review for accuracy.

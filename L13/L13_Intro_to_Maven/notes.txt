@@ -1,0 +1,21 @@
+
+Main - place where you write your source code
+Test - place where you write your unit tests or integration tests
+
+Phases of Maven
+
+1. Clean - deletes the target folder
+2. Validate - validates the pom.xml and doesn't do anything logical, it's kind of a helper phase
+3. Compile - compiles all the files in the main directory
+4. Test - compiles all the files in the test directory + runs the test cases
+5. Package - creates a jar in the target folder with the name as <artifact-id>-<version-name>
+6. Verify - validates if the jar exists in the target folder or not, it's kind of a helper phase
+7. Install - Copying the pom and the jar file to the local repository
+8. Site - It's kind of a helper phase responsible to validate the remote repository existence
+9. Deploy - Deploys / Pushes the jar file to the remote repository
+
+
+
+Plugins are a set of goals
+
+What a maven's phase / lifecycle do is decided the corresponding plugin and it tries it achieve the task by accomplishing a set of plugin goals
