@@ -1,0 +1,56 @@
+Spring boot has 2 main pillars:
+
+1. Inversion of control
+    When you delegate the responsibility of doing something to another entity instead of
+    doing yourself, it's known as inversion of control.
+Example: You want to go to your office. There are 2 options available:
+        1) You can rent a cab where you will be sitting idle and someone will be driving for you and you don't have to pay anything.
+        2) You drive your own car and reach office
+
+
+Whenever you want an object of a class to be created during the application startup, you need to make
+that as a valid bean by defining @Component on top of it either directly or indirectly.
+
+TestController (@RestController) --> @Controller --> @Component
+DemoBeansApplication (@SpringbootApplication)  --> @SpringBootConfiguration --> @Configuration --> @Component
+
+
+
+2. Dependency Injection
+Injection of a dependency / using an object reference which is already created by spring boot
+(by the phenomenon of inversion of control / IOC) in some other class is known as dependency injection
+
+// otherController - com.example.demo_beans.TestService@1a38ba58    // com.example.demo_beans.TestService@1a38ba58
+// testController  - com.example.demo_beans.TestService@1e53135d    // com.example.demo_beans.TestService@1e53135d
+
+
+There are 3 types of dependency injection
+1. Field injection - when the autowired annotation is written on top of a field in a class which is component in itself
+
+2. Constructor Injection - when the autowired annotation is written on top of the constructor of a class which takes another class' bean as an argument
+It becomes essential whenever you want to work on the dependency getting injected inside the constructor itself as the value will not be null
+but if you don't want to work on the injected dependency inside the constructor you can feel free to either use field injection or constructor injection
+
+3. Setter injection -
+
+---------------
+
+Spring and Spring boot follows MVC architecture
+M - model  (amazon prime - video, user) , (amazon e-commerce - shopping_cart, user, order, product, )
+V - view   ( what data you are returning back to the client from your server)
+C - controller - (first landing point of the network call made by client which comes to the server),
+                here you define the API contract, any sort of validations that you want to do on the
+                request and then it can be passed to other classes for implementing business logic
+
+
+By default the bean scope is singleton, it can be changed to other scopes as well like prototype : on every injection request, a new instance will be created
+All the beans / objects created by spring boot are kept in a container known as IOC container.
+
+// {name - demoController, class - DemoController.class, }
+
+---------------------------
+
+Dependency injection
+ --> How to inject our own classes that we have defined
+ --> How to inject properties defined in the application.properties via @Value
+ --> How to inject / create a bean of already existing library classes.

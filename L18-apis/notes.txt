@@ -1,0 +1,5 @@
+Conventions to follow while writing APIs
+
+1. use hyphen instead of underscore
+2. do not use camel case or any other format which include upper case characters
+3. do not include actions in the endpoint path
