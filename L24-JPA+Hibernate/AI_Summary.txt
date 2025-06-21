@@ -1,0 +1,75 @@
+Quick recap
+
+This meeting covered various aspects of Spring Data JPA, Hibernate, and database management in Java applications. The discussion included topics such as ORM frameworks, database configuration, entity mapping, and Hibernate's DDL modes. Additionally, the instructor addressed database security concepts and a potential change in meeting time was discussed.
+
+
+Next steps
+
+Class Instructor: Push today's code to repository immediately after class
+
+Class Instructor: Push leftover/missing code from previous sessions before tomorrow afternoon
+
+Students: Discuss and decide amongst themselves on Whatsapp group whether to change class timing to 7:30 PM
+
+Students: Notify instructor of final decision regarding class timing change after group discussion
+
+Summary
+
+Spring Data JPA and ORM Frameworks
+The instructor explained the relationship between Spring Data JPA and ORM frameworks, clarifying that JPA is only applicable for relational databases while different NoSQL databases have different storage mechanisms. They demonstrated how removing Hibernate leads to errors due to missing Jakarta Persistence API dependencies, and showed alternative ORM frameworks like Eclipse Link and OpenJPA that also require the same dependencies. The discussion concluded with an explanation of a new error about missing data source URL, which needs to be addressed for the application to start.
+
+
+Spring Boot JPA Data Source Configuration
+The discussion focused on understanding the mandatory URL attribute requirement when using Spring Boot Starter Data JPA, which is necessary for configuring a data source. The instructor explained that while URLs were not previously required for simple applications, adding JPA dependency necessitates a data source configuration. They demonstrated how to configure the URL, username, and password properties in the application properties file, and explained that Hibernate needs these details to create tables and establish connections. The session concluded with an explanation of how to resolve the "bean creation failed" error by setting the Hibernate dialect or Jakarta persistence JDBC URL, and emphasized that while the exact solution can vary, understanding the underlying database driver is crucial for proper configuration.
+
+
+
+MySQL Connector Java Dependency Updates
+The instructor explained the shift in MySQL Connector Java dependencies, highlighting the transition from the older dependency (with MySQL as the group ID) to the newer one (with com.mysql as the group ID and MySQL Connector J as the artifact ID). They discussed how Hibernate determines the database dialect and explained that, in recent Spring Boot versions, specifying the dialect is not mandatory as it can be inferred from the JDBC URL. The instructor also demonstrated how Hibernate creates a database without requiring the dialect property and explained the role of the spring.jpa.show-sql property in displaying SQL queries.
+
+
+
+SQL Logging and HR System Structure
+The instructor explained the concept of SQL logging, noting that while database creation queries are not logged, table creation and other operations are. They discussed the importance of redirecting logs from console to files in production environments. The instructor then outlined the structure of an HR system project, explaining the relationship between controllers, services, and repositories, and introduced the concept of models (or entities) that represent real-world data stored in the database. They concluded by describing the structure of the Employee model, including fields for basic employee information and timestamps for creation and update dates, and emphasized the importance of organizing code to keep database-related classes together in the model package.
+
+
+
+Lombok Plugin Installation Troubleshooting
+The team discussed issues with annotation processing and Lombok plugin installation in their Java project. They encountered problems with getters and setters not being generated, which were eventually resolved by cleaning and rebuilding the project. Prashant suggested trying to install Lombok again, but this was not necessary as it was already installed and enabled. The team agreed that most members should be able to run the project on their own machines, and those who cannot will receive guidance on the necessary steps.
+
+
+
+Spring vs Hibernate Annotations
+The instructor explained the difference between Spring component and JPA entity annotations, clarifying that while component annotations are used to create beans for Spring to manage, entity annotations are specifically for Hibernate to map Java classes to database tables. They discussed that while Hibernate needs entity annotations to create tables, it doesn't require objects of those entities to be instantiated at startup, unlike Spring components which need to be instantiated as beans. The instructor also explained that auto-wiring can work in Hibernate, but it's different from Spring's bean creation, and clarified that Hibernate can create database tables based on entity classes without needing to instantiate those objects first.
+
+
+
+Hibernate Database Join Techniques
+The instructor explained database joins and mapping between entities using Hibernate annotations. They covered different types of joins (one-to-one, one-to-many, many-to-one, many-to-many) and demonstrated how to create foreign keys in SQL tables. The instructor also discussed storing enum types in SQL tables using the @Enumerated annotation and explained the use of @CreationTimestamp and @UpdateTimestamp annotations for automatically tracking when records are created and updated.
+
+
+
+SQL Primary Key Best Practices
+The instructor explained that while defining a primary key in an SQL table is not mandatory, it is highly recommended as it enables faster searching and data sorting through default indexing. They clarified that while SQL databases don't enforce primary key definitions, Hibernate requires them for proper functioning, particularly when using Spring Data JPA. The instructor also discussed primary key generation mechanisms, noting that if not specified, Hibernate expects manual ID assignment, but auto-increment options are available for automatic ID generation.
+
+
+
+Database Indexing and Query Performance
+The instructor discussed database indexing and query performance, explaining how SQL Server processes records and the benefits of defining primary keys for faster searches. They then covered Hibernate's automatic table creation process and identified that the table was not being generated despite proper mappings, ruling out issues with setters and getters or component scanning. The class concluded with a discussion about transaction management and the need for proper configuration in the metadata file.
+
+
+
+Hibernate DDL and Type Conversion
+The instructor explained Hibernate's DDL (Data Definition Language) modes and their default settings, noting that for non-embedded databases like MySQL, the default mode is "none" which disables DDL handling, while for embedded databases like H2, the default is "create-drop". They demonstrated how to set the DDL auto property in the Spring configuration metadata JSON file and showed examples of different DDL modes, including "create" which creates the schema and destroys previous data. The instructor also explained how Hibernate converts Java data types to SQL data types, including the conversion from camel case to snake case for column names, and demonstrated how Hibernate handles enum types and data time formats in database tables.
+
+
+
+Hibernate DDL Modes in Production
+The discussion focused on Hibernate's DDL modes and their implications for database schema management. The instructor explained that the "create" mode deletes existing data and recreates the schema, while "create-drop" does the same but also drops the schema at the end of the session, making both modes unsuitable for production environments. They introduced the "create-only" mode, which only creates tables without deleting data, but noted it doesn't support schema updates. The recommended mode for production is "update," which adds or modifies columns while preserving existing data, though it doesn't support all types of schema changes. The instructor emphasized that careful data modeling is important to avoid issues when making schema changes.
+
+
+
+Database Security and Voting Poll
+The instructor explained database security concepts, particularly how different users and applications access databases with varying permissions. They discussed how real-world database access is managed through user roles and permissions, with examples from Amazon and other companies. The class also addressed a poll about changing the meeting time from 8:00 to 7:30, with 51% of 57 participants voting in favor but 6 people opposing the change. The instructor decided to let the students make the final decision about the timing change among themselves.
+
+AI can make mistakes. Review for accuracy.

@@ -1,0 +1,17 @@
+
+Whether a primary key in a sql table be null or not ? --> A primary key cannot be null because it is used for retrieving data uniquely from the table, if the retrieving
+key becomes null, we will not be able to pull the data
+
+
+Defining a primary key in a sql table is mandatory or optional ?
+Ans - Not mandatory, but when it to comes to an ORM framework like hibernate, it expects to define the primary key mandatorily
+
+DDL - create table, alter table, create index, ...
+
+DML - insert, update, delete
+
+in hibernate's configuration, we need to specify a property known as ddl-auto =>
+
+amazon
+marketplace team => aman@amazon.com  aman123 --> marketplace-db read-only
+marketplace-service => marketplace-db  --> marketplace-app-01      absqjieh@112w2  delete, read, update, create

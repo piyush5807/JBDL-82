@@ -1,0 +1,67 @@
+Quick recap
+
+This class session covered the implementation of GET APIs for retrieving employee details, including the use of Lombok for generating boilerplate code and the Builder pattern for efficient object creation. The discussion then shifted to SQL queries in Java, focusing on how to extract data from ResultSet objects and convert them into Java objects, while highlighting the challenges of manual mapping and introducing Object Relational Mapping (ORM) as a more scalable solution. Finally, the class explored the auto-increment feature in MySQL databases and discussed best practices for implementing partial updates in APIs, concluding with a brief mention of connecting to multiple databases and resolving Lombok annotation issues.
+
+
+Next steps
+
+All Students: Implement update and delete APIs in the current project using SQL queries as discussed in class
+
+Instructor: Create a new project for demonstrating JPA and Hibernate in the next class
+
+All Students: Review the concept of Object-Relational Mapping before next class
+
+Instructor: Share code examples for connecting to multiple databases using JPA and Hibernate
+
+All Students: Practice writing SQL queries with auto-increment functionality
+
+Instructor: Check and push missing code from classes 15-17 to GitHub repository
+
+
+Summary
+
+GET API and Lombok Implementation
+The class discusses implementing GET APIs for retrieving employee details after creation. The instructor demonstrates how to write a GET mapping in the employee controller, taking an employee ID as a path variable. They explain the process of implementing the get employee function in the repository, including establishing a database connection and writing an SQL query. The class then shifts focus to Lombok, a Java library that generates boilerplate code. They showcase how Lombok can automatically create getters, setters, constructors, and toString methods. The instructor introduces the Builder pattern provided by Lombok, explaining its advantages in creating objects with multiple attributes more efficiently than traditional constructors or setter methods.
+
+
+Lombok Builder Pattern Implementation
+The class discusses the implementation of the Builder pattern using Lombok. It explains that Lombok generates a static inner class called "EmployeeBuilder" within the main class, which contains methods with the same names as the class attributes. These methods set the corresponding values and return the builder object, allowing for method chaining. The class also demonstrates how this pattern simplifies object creation by enabling developers to set only the desired attributes and then call the "build()" method to create the final object. This approach provides a more flexible and readable alternative to using multiple constructors or setters.
+
+
+Function Chaining and Builder Pattern
+The class explains the concept of function chaining and the Builder pattern using examples. They demonstrate how function chaining works in Java, where methods can be called in sequence if each returns an object of the same type. The class then discusses the advantages of using the Builder pattern, particularly in the context of creating complex objects with many attributes. They explain that the Builder pattern allows for more readable and flexible object creation, especially when dealing with objects that have numerous optional parameters. The class uses the example of creating an Employee object to illustrate how the Builder pattern simplifies object creation compared to using a constructor with many parameters.
+
+
+Lombok Annotations and SQL Queries
+The instructor explains the use of Lombok annotations, particularly focusing on @Generated, @Getter, and @Setter. They discuss the differences between using individual annotations versus the @Data annotation, which combines multiple annotations. The class then moves on to discussing SQL queries in Java, specifically how to write a SELECT query to retrieve employee data. The instructor emphasizes the importance of using the correct execution method for different types of SQL queries, explaining that executeQuery() should be used for SELECT statements, while executeUpdate() is for DML (Data Manipulation Language) operations. They also briefly touch on the differences between DML, DDL (Data Definition Language), and DQL (Data Query Language) in database operations.
+
+
+Java SQL ResultSet Data Extraction
+The class discusses how to extract data from a ResultSet object in Java SQL, which represents a table-like structure. They explain that the data needs to be converted into Java objects, such as employee objects. The instructor demonstrates how to iterate through the ResultSet using a while loop and retrieve data using methods like getInt() and getString(). They also show how to access data by column number or column name, and how to convert string values to enum types using the valueOf() method for custom data types like department and employment type.
+
+
+Java Employee Database Retrieval
+The class discusses how to retrieve employee data from a database using Java. They explain the process of creating an Employee object from a ResultSet, including handling different date types and converting between SQL and Java dates. The class also covers how to handle scenarios where zero, one, or multiple employees are returned, and demonstrates creating APIs to fetch a single employee by ID and to fetch all employees. They show how to use prepared statements for parameterized queries and regular statements for fixed queries, and discuss the importance of proper error handling and null checks.
+
+
+Challenges of Manual Database Mapping
+The class discusses the challenges of manually mapping database columns to Java objects. They highlight several issues, including the need to update code when data types or schema change, potential errors from null values, and the impracticality of manually mapping numerous attributes. The instructor emphasizes that schema changes, such as adding, removing, or renaming columns, can break the existing code. They also point out that this approach becomes increasingly unmanageable as the number of attributes grows, suggesting that it is not a scalable solution for modern applications.
+
+
+Introduction to ORM in Java
+The instructor explains Object Relational Mapping (ORM) and its importance in Java applications. He emphasizes that using ORM tools like Hibernate is more scalable than directly working with SQL drivers. The class is informed that they will start learning about Hibernate in the next session, which will be accessed through a JPA (Java Persistence API) layer. The instructor also mentions other ORM frameworks like EclipseLink and iBATIS, noting that Hibernate is the default implementation for JPA but alternatives exist.
+
+
+SQL Auto-Increment Implementation Demonstration
+The instructor discusses the upcoming class where they will implement the same APIs with a different approach, highlighting how it will be simpler and less error-prone. They demonstrate potential issues with the current implementation, such as data swapping and broken systems that appear to work fine. The instructor then introduces the concept of auto-increment in SQL databases, explaining how it automatically generates unique IDs for new entries without manual input, and demonstrates its functionality through examples.
+
+
+MySQL Auto-Increment Behavior Explained
+The class discusses the auto-increment feature in MySQL databases. The instructor explains that when inserting new records, MySQL assigns the next available ID by adding one to the highest ID seen so far, even if lower numbers are available. This approach is used for efficiency and to avoid potential conflicts with existing IDs. The class also covers scenarios where IDs are manually set or records are deleted, noting that the auto-increment value does not decrease when records are removed. The instructor emphasizes that this behavior is designed to prevent duplicate key exceptions and maintain data integrity.
+
+
+API Partial Updates Best Practices
+The instructor discusses the implementation of partial updates in APIs, emphasizing the challenges and best practices. He explains that when using PATCH APIs, developers need to be careful to avoid unintentionally setting default values for fields that are not being updated. The instructor suggests either using PUT APIs where the entire updated data is sent from the front end, or implementing PATCH APIs by first retrieving the existing data from the database and then merging it with the incoming changes. He also mentions that using ORM frameworks can simplify these processes. The class concludes with the instructor addressing questions about connecting to multiple databases and resolving Lombok annotation issues in different Java versions.
+
+
+AI can make mistakes. Review for accuracy.
