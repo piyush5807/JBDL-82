@@ -1,0 +1,58 @@
+Quick recap
+
+The instructor provided a detailed explanation of Hibernate and Jakarta Persistence annotations, focusing on table and column modifications, key generation strategies, and their implementation in Spring Data JPA repositories. The class explored how JPA repositories work with generics and wrapper classes, and discussed the differences between repositories for relational and NoSQL databases. The discussion concluded with an examination of Hibernate's sequence generation mechanisms, comparing the auto and identity strategies and their performance implications in different Spring Boot versions.
+
+
+Next steps
+Class: Cover implementation of JPA Repository functions in next class
+
+Class: Demonstrate how to write custom queries in next class
+
+Class: Push the current code to Github after the class
+
+Class: Cover minor problems next week
+
+
+Summary
+
+Hibernate Annotations and Key Generation
+The instructor continues the discussion on annotations in Hibernate and Jakarta Persistence. They explain the @Table annotation, which can be used to change table names or create indexes. The @Column annotation is introduced to modify column names. The concept of auto-generated keys is revisited, with a focus on the GenerationType.IDENTITY strategy. The instructor demonstrates how Hibernate delegates the responsibility of ID generation to the underlying database. They also begin to introduce a new entity, Book, to further illustrate these concepts.
+
+
+JPA and Hibernate Repository Basics
+The instructor explains the process of creating a repository to connect with the database using JPA and Hibernate. They describe how JPA acts as an interface providing function declarations, while Hibernate implements these functions. The instructor demonstrates how to extend the JpaRepository interface in their own repository class, which allows them to use pre-implemented functions for database operations without writing the code themselves. They also show the connection between the Spring Boot starter data JPA dependency and the JpaRepository interface.
+
+
+JPA Generics and Primary Keys
+The class discusses the use of generics in JPA Repository, specifically focusing on the T and ID parameters. T represents the object type being mapped to the database table, while ID refers to the data type of the primary key. The instructor emphasizes the importance of using wrapper classes (Integer, Long) instead of primitive data types (int, long) for primary keys, as they allow for null values and better error handling. The class also explores scenarios where auto-generated keys might not be used, and how using wrapper classes can help identify issues with missing primary key values during data insertion.
+
+
+Spring Data Repository Interface Hierarchy
+The class discusses the structure and hierarchy of repository interfaces in Spring Data, focusing on the differences between relational and NoSQL databases. The instructor explains that JpaRepository is used for relational databases, while different repositories like MongoRepository and CassandraRepository are used for NoSQL databases. These repositories extend common interfaces from Spring Data Commons, allowing for shared functionality across different database types. The instructor emphasizes that NoSQL databases have separate repositories due to their different data structures, which require specialized implementations.
+
+
+Spring Data JPA Repository Implementation
+The discussion focuses on the implementation of repositories in Spring Data JPA. The class explains that the EmployeeRepository interface extends JpaRepository, which in turn inherits from CrudRepository. The actual implementation of these repository methods is provided by SimpleJpaRepository, which has a @Repository annotation. This annotation allows Spring to create a bean for the repository interface without explicitly defining it as a component. The class demonstrates this by debugging and showing that the autowired EmployeeRepository is an instance of SimpleJpaRepository. They also clarify that adding a @Repository annotation to the EmployeeRepository interface is unnecessary and doesn't change its behavior.
+
+
+Spring Interface Bean Configuration
+The instructor explains how to create beans for interfaces in Spring, focusing on repository interfaces. He demonstrates that Spring cannot create a bean for an interface without an implementing class. When multiple implementing classes exist, Spring needs guidance on which one to use. This can be resolved by adding the @Repository annotation to the implementing class, using the @Primary annotation to designate a preferred implementation, or using the @Qualifier annotation to specify which implementation to inject. The instructor provides examples of each approach and shows how they affect which implementation is used when auto-wiring the interface.
+
+
+Spring Bean Management and Annotations
+The class discusses how to use qualifiers and primary annotations in Spring for bean management. The instructor explains that qualifiers have priority over primary annotations when autowiring beans. They demonstrate how to rename beans using the @Repository annotation's value attribute and show that using qualifiers allows multiple primary beans to coexist without conflicts. The class also covers the creation of a new entity (Book) with its corresponding controller, service, and repository to illustrate auto-incrementing keys. Finally, they examine a Hibernate-generated SQL query, highlighting that created_at and updated_at timestamps are set by Hibernate, not 
+MySQL, and emphasizing the importance of understanding which component is responsible for generating each piece of data.
+
+
+Hibernate Primary Key Generation Strategies
+The instructor demonstrates the differences between using generation type "identity" and "auto" for primary key generation in Hibernate. With "auto", Hibernate creates additional sequence tables for each entity and manages the ID generation itself, rather than relying on the database's auto-increment functionality. The instructor shows how the sequence tables are updated as new records are inserted, with the "next_val" column determining the next ID to be used. The class observes that the behavior of "auto" in Java 17 appears similar to "identity", but the underlying mechanism is different.
+
+
+Database Key Generation Strategies
+The class discusses two approaches for generating auto-increment keys in databases: using Hibernate's auto strategy and MySQL's built-in auto-increment functionality. The instructor explains that Hibernate's approach uses a separate sequence table and takes a lock on it to ensure consistency, but this can be slightly slower due to additional network calls. They also highlight a significant disadvantage of Hibernate's method: if data is inserted manually into the database outside of the application, it can lead to inconsistencies and errors. The choice between these approaches depends on the specific use case and requirements of the project.
+
+
+Hibernate Sequence Generation Evolution
+The instructor explains the evolution of Hibernate's sequence generation in Spring Boot versions. In older versions, Hibernate used a single global sequence table for all entities, which could cause performance issues due to locking. In newer versions, Hibernate creates separate sequence tables for each entity, improving concurrency. The instructor clarifies that these sequence tables are used for ID generation and are not related to foreign key relationships between tables. He provides examples to illustrate how foreign keys work independently of the sequence generation mechanism.
+
+AI can make mistakes. Review for accuracy.

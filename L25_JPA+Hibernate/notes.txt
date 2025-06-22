@@ -1,0 +1,57 @@
+
+Whether a primary key in a sql table be null or not ? --> A primary key cannot be null because it is used for retrieving data uniquely from the table, if the retrieving
+key becomes null, we will not be able to pull the data
+
+
+Defining a primary key in a sql table is mandatory or optional ?
+Ans - Not mandatory, but when it to comes to an ORM framework like hibernate, it expects to define the primary key mandatorily
+
+DDL - create table, alter table, create index, ...
+
+DML - insert, update, delete
+
+in hibernate's configuration, we need to specify a property known as ddl-auto =>
+
+amazon
+marketplace team => aman@amazon.com  aman123 --> marketplace-db read-only
+marketplace-service => marketplace-db  --> marketplace-app-01      absqjieh@112w2  delete, read, update, create
+
+
+T, ID in JPA repository:
+    => T refers to the object which is being mapped to a sql table
+    => ID referes to the data type of the primary key of that table
+
+
+----------------------------
+
+EmployeeRepository --> JPARepository  --> ListCrud --> Crud --> Repository
+                        spring-data-jpa         spring-data-commons
+
+EmployeeRepository --> MongoRepository --> ListCrud --> Crud --> Repository
+                     spring-data-mongodb         spring-data-commons
+
+EmployeeRepository --> CassandraRepository --> ListCrud --> Crud --> Repository
+                      spring-data-cassandra         spring-data-commons
+
+
+All the functions which are present in ListCrudRepository, CrudRepository, PagingAndSorting and any other spring data commons repository
+are meant for all the databases in this world, be it relational or no-sql
+
+@Primary annotation is added on top of the qualifying beans and is useful to make one of the many candidates as the primary one to be chosen for autowiring
+@Qualifier is used int the class where the autowiring happens to indicate which bean we are autowiring out of the many qualifying candidates
+
+Qualifier has more priority over Primary, i.e even if you have defined more than one primary bean of the same type, still if you autowire using qualifier, you will not face any errors
+
+@RequestBody - responsible for converting data from json --> java
+@ResponseBody - responsible for converting the data from java --> json
+
+------------------------
+
+In Spring boot's recent versions
+Employee table    => Employee_seq
+Book table        => Book_seq
+Student table =>
+Transaction table
+
+In spring boot 2.X
+Hibernate_sequence = next_val = ?

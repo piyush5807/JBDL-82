@@ -1,10 +1,10 @@
-package com.example.spring_boot_with_db_2;
+package com.example.jpa_hibernate;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootWithDb2ApplicationTests {
+class JpaHibernateApplicationTests {
 
 	@Test
 	void contextLoads() {
