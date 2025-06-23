@@ -1,0 +1,56 @@
+Quick recap
+The meeting covered various aspects of JPA and Hibernate, including CRUD operations, transactional behavior, and query methods in Spring Data JPA. The instructor demonstrated how to implement different types of APIs, handle database operations, and write custom queries using JPQL and native SQL. Throughout the discussion, the instructor compared different approaches, explained error handling, and addressed performance considerations while preparing students for an upcoming project.
+
+Next steps
+Students: Prepare for minor project one which will be covered in the next two classes
+
+Students: Practice implementing custom queries using the three approaches discussed: JPQL, native queries, and method naming conventions
+
+Students: Study the differences between JPQL and native queries, including their pros and cons
+
+Students: Review the Spring documentation link shared for possible method naming conventions in JPA repositories
+
+Class: Push the code from today's session as a separate project to maintain sequential learning progression
+
+Summary
+
+JPA and Hibernate CRUD Concepts
+The instructor discussed JPA and Hibernate concepts, including auto-increment keys and repository interfaces. They covered building CRUD APIs with Spring Data, focusing on methods like get by ID and find by ID, and explained the use of Optional to handle null values. The instructor also explained the difference between delete and save methods in JPA, and how the entity manager handles new and existing entities. They plan to start a minor project next week, which will be completed in the next two classes.
+
+
+Hibernate and Spring Data JPA
+The instructor explained how Hibernate determines whether an entity is new or old by checking if the primary key is present, and discussed the implementation of save, persist, and delete functions in Spring Data JPA. They demonstrated how to return an employee object when deleting an entity by first retrieving the employee using getEmployee or findById methods, and showed how to test these functions with request parameters. The instructor also mentioned that they would cover transactional aspects and other topics in future discussions.
+
+
+HTTP Request Safety and Transactions
+The instructor explained the concepts of safe and unsafe HTTP request methods, comparing them to SQL database operations, and discussed how relational databases handle race conditions and data inconsistencies through transactional behavior. They explained that transactional annotations ensure that all statements within a block either execute completely or none execute, with any errors causing a rollback of all changes. The instructor also mentioned that they would cover commit operations and different isolation levels in future discussions.
+
+
+GET vs POST Method Security
+Prashant asked about the use of POST methods for data retrieval, which Class explained could be due to browser restrictions or security requirements like CSRF tokens. Class demonstrated that GET methods can also be secured with tokens and explained that while POST operations might seem safer, they can actually impact performance due to database locking, particularly for concurrent access to the same record. Class also clarified that in Spring Data JPA repositories, only unsafe operations like delete and save are marked as transactional, while read operations like get and find are non-transactional.
+
+
+Employee Data Update API Implementation
+The instructor demonstrated how to implement an Update API for employee data, explaining that the API will accept both PUT and PATCH methods. They showed that for PUT requests, the entire employee data is sent, while PATCH requests only update specific fields. The instructor emphasized the importance of setting the employee ID in the request to ensure proper data update rather than creation of a new record. They also discussed how to handle partial updates using deep merge libraries like Lodash or Jackson, and explained that Hibernate automatically handles the database updates based on the provided ID.
+
+
+JPA Database Operations Overview
+The discussion focused on database operations and JPA functionality. Class explained the use of libraries for merging objects and handling foreign keys, while Aman asked about updating employee and book table data in a single request. Class demonstrated how to write custom queries for complex use cases and explained the difference between PUT and PATCH operations, noting that while PATCH allows partial data updates, both ultimately send complete data to the database. The conversation concluded with a discussion about defining custom functions in the Employee Repository interface using JPA's @Query annotation, which provides query abstraction not specific to Hibernate.
+
+
+JPQL Query Language Overview
+The instructor explained JPQL (Java Persistence Query Language), emphasizing its object-oriented approach and syntax similarities to SQL. They demonstrated how to write JPQL queries, highlighting the importance of using Java class attributes instead of database column names, and showed two methods for passing variables to queries. The instructor also covered error handling in JPQL queries, explaining how incorrect queries can prevent application startup to facilitate early troubleshooting. They concluded by discussing the flow of queries from controller to repository, and demonstrated different types of exceptions that can occur when working with JPQL.
+
+
+Native SQL Query Implementation
+The instructor explained how to implement a function to retrieve employees from a specific department with salaries greater than a certain value, using both JPQL and native SQL queries. They demonstrated the use of the @Query annotation with the nativeQuery parameter set to true, showing how this allows direct SQL queries without Hibernate's parsing, which can be useful for performance or when dealing with complex SQL structures. The instructor also highlighted that while native queries avoid errors during application startup, any SQL syntax issues will only be caught at runtime when the query is executed.
+
+
+JPA Query Performance Comparison
+The discussion focused on comparing JPQL, native queries, and no-queries in JPA. Prashant and Kumar highlighted that JPQL provides better visibility of errors during startup and is database-agnostic, while native queries can lead to runtime errors and require more testing. Sudheeshna noted that JPQL's performance can be slower due to query conversion, but this might be negligible for most use cases. The instructor concluded by explaining that JPA allows functions to be written without queries if named according to JPA's expectations.
+
+
+Spring Query Writing Techniques
+The instructor demonstrated how to write custom queries in Spring using the "find by" syntax, covering various operators like greater than, equal to, and between. They explained the difference between using functions and queries, noting that functions can sometimes be more concise but might look awkward in code reviews. The instructor also clarified that the current code would be added as a separate project to maintain a clear sequence of the course's progression.
+
+AI can make mistakes. Review for accuracy.

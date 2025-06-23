@@ -1,0 +1,146 @@
+
+Whether a primary key in a sql table be null or not ? --> A primary key cannot be null because it is used for retrieving data uniquely from the table, if the retrieving
+key becomes null, we will not be able to pull the data
+
+
+Defining a primary key in a sql table is mandatory or optional ?
+Ans - Not mandatory, but when it to comes to an ORM framework like hibernate, it expects to define the primary key mandatorily
+
+DDL - create table, alter table, create index, ...
+
+DML - insert, update, delete
+
+in hibernate's configuration, we need to specify a property known as ddl-auto =>
+
+amazon
+marketplace team => aman@amazon.com  aman123 --> marketplace-db read-only
+marketplace-service => marketplace-db  --> marketplace-app-01      absqjieh@112w2  delete, read, update, create
+
+
+T, ID in JPA repository:
+    => T refers to the object which is being mapped to a sql table
+    => ID referes to the data type of the primary key of that table
+
+
+----------------------------
+
+EmployeeRepository --> JPARepository  --> ListCrud --> Crud --> Repository
+                        spring-data-jpa         spring-data-commons
+
+EmployeeRepository --> MongoRepository --> ListCrud --> Crud --> Repository
+                     spring-data-mongodb         spring-data-commons
+
+EmployeeRepository --> CassandraRepository --> ListCrud --> Crud --> Repository
+                      spring-data-cassandra         spring-data-commons
+
+
+All the functions which are present in ListCrudRepository, CrudRepository, PagingAndSorting and any other spring data commons repository
+are meant for all the databases in this world, be it relational or no-sql
+
+@Primary annotation is added on top of the qualifying beans and is useful to make one of the many candidates as the primary one to be chosen for autowiring
+@Qualifier is used int the class where the autowiring happens to indicate which bean we are autowiring out of the many qualifying candidates
+
+Qualifier has more priority over Primary, i.e even if you have defined more than one primary bean of the same type, still if you autowire using qualifier, you will not face any errors
+
+@RequestBody - responsible for converting data from json --> java
+@ResponseBody - responsible for converting the data from java --> json
+
+------------------------
+
+In Spring boot's recent versions
+Employee table    => Employee_seq
+Book table        => Book_seq
+Student table =>
+Transaction table
+
+In spring boot 2.X
+Hibernate_sequence = next_val = ?
+
+-------------------------------------
+
+@Transactional
+    public <S extends T> S save(S entity) {
+        Assert.notNull(entity, "Entity must not be null");
+        if (this.entityInformation.isNew(entity)) {
+            this.entityManager.persist(entity);
+            return entity;
+        } else {
+            return this.entityManager.merge(entity);
+        }
+    }
+
+This function is trying to exhibit the phenomenon of upsert: update if present else insert
+
+this.entityInformation.isNew(entity) --> checks if the incoming data to be saved is already present in the table or not, i.e is the entity new or old
+
+this.entityManager.merge(entity); --> update
+
+this.entityManager.persist(entity);  --> insert
+
+Hibernate needs an ID / Primary key to identify which row to update
+If the primary key is not present, hibernate will not be able to identify which row to update and hence it saves the data in a new row making it a different record
+
+
+POST, PUT, PATCH, DELETE -- unsafe methods => these APIs would be changing the state of the data on the server
+GET, HEAD --> safe method
+
+Method - POST
+internally you are retrieving the records
+
+Spring Security : CSRF Token mandatorily for post, put, delete, patch
+
+
+select
+
+DML Commands - Data Manipulation Language commands
+insert into
+update
+delete
+
+Relational dbs exhibit transactional behaviour in all the queries where the data is getting changed
+
+Transactional behaviour means either all the statements execute or none of the statements execute
+
+@Transactional
+function(){
+        ... s1 => executed
+        ... s2 => executed
+        ... s3 => failed
+        ... s4
+
+        when s3 fails, s1 and s2 are rolled back
+
+        int a = 2 + 3;
+        insert(a);  // rolled back
+        int b = a + 5;
+        insert(b);  // error
+}
+
+
+alter table
+create index
+create
+
+
+--------------
+
+Controller --> Service --> Repository --> Function in Repository
+           <--             <--         <--     Error is here
+
+
+JPQL vs Native query
+
+Pros of JPQL
+--> Visibility around any possible bugs that might exist in your query, by not letting the app start during the boot up
+--> You as a developer don't need to worry even if your column names change, because you are referring to java object and their fields
+--> Standard format for all your databases
+
+
+Cons of JPQL
+--> Performance concerns / latency is slightly high because of converting the JPQL queries in underlying database supported queries
+
+
+// Query takes 2 secs to execute on the db server
+// Hibernate takes 30 ms to convert the query into sql supported syntax
+
+// 2.030 s
