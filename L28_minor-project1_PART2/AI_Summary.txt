@@ -1,0 +1,71 @@
+Quick recap
+The meeting focused on developing a library management system, covering the design and implementation of transaction classes, data modeling for books and authors, and validation mechanisms using Spring Boot Starter Validation. The team discussed various technical aspects including data transfer objects, database operations, and security considerations for handling book issuance and returns. The session concluded with plans to implement transaction handling, error scenarios, and edge cases for the book issuing system, with discussions scheduled for Spring security and caching in future sessions.
+
+
+Next steps
+Class: Plan to complete all pending topics in next two classes
+
+Class: Start spring security topic from next to next week
+
+Class: Complete return transaction implementation in next class
+
+Class: Cover unit test cases in next class
+
+Class: Cover spring profile topic in next class
+
+Class: Start caching implementation in next class
+
+Class: Push today's code to Github repository
+
+Students: Review yesterday's code that was pushed to Github this morning
+
+Summary
+
+Library Transaction Class Design
+The instructor continued discussing the development of a library management system, focusing on the transaction class. They outlined the attributes needed for the transaction class, including id, status (pending, success, failed), transaction date, update timestamp, transaction type (issuance, return), and foreign keys for book and student. The instructor explained the concepts of unidirectional and bidirectional relationships, and mentioned that they would discuss bidirectional relationships in more detail later. They also introduced the idea of capturing fines for late returns.
+
+
+Book Transaction Management System
+The discussion focused on transaction management and data modeling, particularly regarding book issuance and returns. Class explained that each book can be part of multiple transactions, and emphasized that return transactions should be separate from issuance transactions to maintain auditability and data integrity. The team discussed the implementation of data transfer objects (DTOs) and validation mechanisms using Spring Boot Starter Validation, with Class demonstrating how to create controllers and services for handling book and student transactions.
+
+
+Digital Library Data Model Development
+The meeting focused on the development of a digital library system, discussing the creation of a book and author data model. The team decided to normalize data by creating an author table, though author-related requests would not be a primary feature. They established validation rules for book creation, including mandatory fields like name, genre, and author name, while making email and country optional. The discussion clarified that book creation requests would come from administrators rather than students, and Kumar understood that author details were needed to prevent data redundancy rather than for direct user queries.
+
+
+Java Validation Issues Resolved
+The team discussed validation issues in a Java application using Jakarta validation. They identified that the validation was not working properly due to missing the @Valid annotation in the controller. After adding this annotation, they found that the validation was working correctly, but there were some issues with the error messages. They discovered that custom error messages could be added to the validation annotations, and that these messages would be displayed in the error logs. The team also learned that if they wanted to customize the error messages shown to the user in Postman, they would need to create a separate interceptor class.
+
+
+Understanding Data Transfer Objects
+The instructor explained the concept of Data Transfer Objects (DTOs) and their importance in API development. They demonstrated how to create a DTO class to handle input data, and showed a method for converting DTOs to model objects before saving to the database. The instructor also discussed security benefits of using DTOs, as they hide internal data structures from clients and prevent exposure of unnecessary attributes.
+
+
+Author-Book Database Sequence Strategy
+The discussion focused on the sequence of database operations for storing book and author data. The team decided to use option 2, which involves saving the author first and then the book, to minimize database calls and reduce latency. They also discussed the need to create an author service and repository to handle author creation and management. The team addressed the issue of duplicate author entries by implementing a "get or create" functionality based on email ID, which ensures that authors are only created when unique email addresses are encountered.
+
+
+DTO vs. Model in Service Class
+The instructor explained two methods for implementing a create function in a service class: either by taking a DTO as a parameter or by directly taking a book object. They discussed the advantages and disadvantages of each approach, emphasizing that the conversion from DTO to model can be done either in the controller or in the service class, but should not be done after the service class. The instructor also clarified the concept of converting a DTO to a model object, explaining how to manually set attributes from the request object. Finally, they addressed an issue with the Long data type in Lombok and discussed alternative solutions for setting getters and setters.
+
+
+Book Service Data Implementation Discussion
+The team discussed the implementation of a book service, focusing on author and book creation logic. They identified that while author creation was transactional, book creation was not, which could lead to inconsistent data if errors occurred. They clarified that the 'available' column in the database used a binary representation (0/1) to store Boolean values, and demonstrated how this worked by updating the database manually. The discussion concluded with a suggestion to improve error handling by implementing try-catch blocks to handle exceptions and potentially rollback transactions if needed.
+
+
+Student Controller and Transaction ID
+The instructor led a coding session to create a student controller and related services, including validation for student data such as name, department, role number, email, and country. They discussed the need for a transaction controller and introduced a new field called external transaction ID to enhance security and user tracking. The instructor explained the importance of this ID for payment gateways and user queries, and mentioned that they would provide more details about its use case after implementing transactions.
+
+
+Book Transaction System Implementation
+The discussion focused on implementing a book transaction system where books can be issued and returned. The system will use student IDs and book IDs as primary identifiers, with separate APIs for issue and return transactions. The team decided to store only the student ID in the book table rather than maintaining an "available" flag, as the availability can be determined by checking if the student ID is null. They also established that students cannot exceed a maximum number of issued books (configurable through properties file) and set a default duration of 15 days for book issues. The implementation will follow a unidirectional relationship approach between students and books, with additional queries needed to track the number of books issued to each student.
+
+
+Book Transaction System Implementation
+The discussion focused on implementing a transaction system for book issuance. The team discussed creating a transaction entity with a pending status, which gets updated to success or failure after validating the request and updating the book's availability. They decided to use a get-or-create function for the book service rather than creating a separate update function, and emphasized the importance of saving the transaction status in the repository to ensure proper updates. The team also covered error handling using try-catch blocks and the use of finally for common code execution, with a decision to only catch errors after the transaction is created since failed creation makes further actions irrelevant.
+
+
+Book Issuing System Implementation Review
+The meeting focused on discussing the implementation of a book issuing system, including transaction handling, error scenarios, and edge cases. The team reviewed the code for issuing books to students, covering database calls, validation checks, and the handling of exceptions such as unavailable books or students reaching the maximum book limit. They also addressed concerns about transaction updates and book availability, clarifying that the code already handles these scenarios. The group agreed to wrap up the return transaction process, cover unit tests, and discuss Spring profiles and caching in the next sessions, with the aim of starting Spring security in the following week.
+
+AI can make mistakes. Review for accuracy.

@@ -1,0 +1,46 @@
+
+JPA has 2 types of relationships
+
+1. Uni-directional relationship
+2. Bi-directional relationship
+
+
+    // One   To    Many
+    // One   To    One
+    // Many  To    One
+    // Many  To    Many
+
+The first part of the jpa join annotations belong to the entity class in which we are writing the annotation
+and the second part is written keeping in the mind the entity on top of which we are writing this annotation
+
+
+----------------------------------------------
+
+b1  Intro to Java    a1     available     student = null
+b2  Intro to Java    a1     available     student = null
+
+Step 1 : s1 --> Initiates an issue txn --> b1
+
+b1  Intro to Java    a1     unavailable     student = s1
+b2  Intro to Java    a1     available       student = null
+
+t1  issue        b1           s1         success          d1
+
+Step 2:   s1  --> Initiates a return txn  --> b1
+
+b1  Intro to Java    a1     available       student = null
+b2  Intro to Java    a1     available       student = null
+
+t1  issue        b1           s1         success          d1
+t2  return       b1           s1         success          d1 + 20
+
+DTOs are the classes which are used to transferring data across different java classes mostly used in requests and
+responses coming from the client or are being sent to the client as a response
+These are also known as POJO - plain old java object
+
+If you need to alter the message sent in the postman or as part of errors, you need to handle it via an interceptor class like controllerAdvice
+
+------------------
+
+Controller --> Service --> Repository --> DB
+dto          dto-->model     model
