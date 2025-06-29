@@ -1,0 +1,75 @@
+Quick recap
+
+The meeting focused on implementing a digital library system, discussing database design approaches and relationships between entities like users, books, and authors. The class explored various technical considerations including primary key choices, normalization principles, and the implementation of foreign key relationships using JPA and Hibernate. The session concluded with a review of the current project status, discussion of upcoming curriculum topics, and clarification of database design concepts including unidirectional and bidirectional relationships.
+
+
+Next steps
+
+Development Team: Create Transaction entity with student_id and book_id as foreign keys
+
+Development Team: Implement book availability feature in the library management system using Boolean flag in Book entity
+
+Development Team: Create APIs for book issuance and return functionality
+
+Development Team: Add validation constraints for unique email and roll number in Student entity
+
+Development Team: Add validation constraints for unique email in Author entity
+
+Development Team: Implement bi-directional relationships between entities
+
+Development Team: Implement search functionality to find books by author name/id/email
+
+Development Team: Add unit tests for APIs using JUnit and Mockito
+
+Development Team: Implement profiling for different environments after completing the minor project
+
+Development Team: Set up Redis caching after completing the minor project
+
+
+Summary
+
+Digital Library Book Tracking System
+The discussion focused on implementing book availability in a digital library system. The class explained two approaches: one using book name as the primary key with a count of available copies, and another using unique book IDs. After comparing the pros and cons, they decided to use the second approach with unique book IDs, as it allows better tracking of specific book copies and their availability. The class also discussed how this system would work with the frontend, including how book issuance and return would be handled.
+
+
+Project Entity Relationship Design Discussion
+The meeting focused on discussing the associations between different entities in a project, particularly user, book, author, and transaction. The discussion covered the different types of relationships, such as one-to-one, one-to-many, and many-to-many, and determined that the relationship between users and books should be one-to-many, allowing users to borrow multiple books at a time. It was also decided that the relationship between books and authors would be simplified to one-to-many, with one author writing many books, but not vice versa. The conversation ended with a clarification of the relationships between the entities, emphasizing the importance of understanding the perspective from which the relationship is viewed.
+
+
+Database User-Transaction-Book Relationship Design
+The discussion focused on understanding the relationships between users, transactions, and books in a database design. The participants clarified that one user can have multiple transactions but only one transaction can have one user, and similarly, one book can be part of multiple transactions but one transaction can only have one book. They discussed two approaches to mapping these relationships: storing a list of book IDs in the user table or using a foreign key in the book table to reference the user ID. The group decided that storing the list of book IDs in the user table (the second approach) was preferable because it allows for efficient retrieval of user information for each book, though it may require more space in the database.
+
+
+Efficient Data Storage and Querying
+The instructor explained two approaches to storing and querying data about book issuances. In the first scenario, books are mapped to users using a foreign key, allowing for efficient queries with logarithmic time complexity. In the second scenario, users are mapped to books, which results in slower linear time complexity due to the inability to use indexes on multi-value columns. The instructor concluded that the first approach is better because it allows for faster queries when searching by book ID. Kumar suggested discussing normalization and denormalization in future sessions.
+
+
+Foreign Key Design Strategy Discussion
+The discussion focused on database normalization, specifically regarding the design decision between storing book IDs in the user table as foreign keys or storing user IDs in the book table as foreign keys. The instructor explained that while normalization reduces redundancy by separating related data into different tables, the specific foreign key choice depends on retrieval strategy rather than normalization principles. They emphasized that most systems are read-heavy, and proper data retrieval optimization is crucial for user experience, using examples like Instagram and LinkedIn feeds to illustrate this point.
+
+
+Project Structure and Dependencies Setup
+The team discussed the basic structure of a project, focusing on creating models and setting up dependencies. They decided to use JPA, SQL driver, Spring Web, and Lombok for the project. Class demonstrated how to create a Student entity with a UUID as the identifier, and set up a database connection using Spring Data Source. They agreed to start writing APIs and implementing functionalities the next day, with unit testing to be covered if time permits.
+
+
+Key Choices in Database Design
+The discussion focused on the advantages and disadvantages of using integers versus strings as primary keys in databases. Class explained that while integers offer faster retrieval and caching, string comparisons can be more time-consuming, especially with large UUIDs. Kumar mentioned that integers are indexed more efficiently, which can improve performance. The group also discussed potential security concerns with sequential IDs, as they could reveal the number of records in a database. Class shared an example from their own SaaS product where similar-looking UUIDs in the development and production environments caused confusion.
+
+
+Database Design and Constraints Discussion
+The class discussed the challenges of using UUIDs as primary keys due to their slower comparison times compared to integers, and decided to use sequential numbers instead. They defined the attributes for a student table, including roll number, name, department, and email, with constraints of not null and unique for roll number. For the book table, they decided to track individual book IDs without maintaining a count of copies, and included attributes such as name, genre, author information, and availability status. They also added a user vector for students to issue books, using email as the primary identifier.
+
+
+JPA Relationship Types Explained
+The instructor explained the concepts of unidirectional and bidirectional relationships in JPA, using a student-book association as an example. They discussed how unidirectional relationships only require an annotation at the entity with the foreign key, while bidirectional relationships need annotations at both entities. The instructor also explained the concept of back references and how they allow for automatic population of related data when querying. They concluded by mentioning that they would demonstrate creating tables for book, student, and author entities, starting with unidirectional relationships.
+
+
+Database Design and Foreign Keys
+The instructor explained database design concepts, focusing on foreign key relationships between author, student, and book tables. They demonstrated how Hibernate handles foreign key constraints, showing that Hibernate adds foreign keys separately from the create table command rather than including them in the initial table creation. The instructor also introduced DBeaver as a database management tool and explained the logical reasoning behind foreign key placement, emphasizing that developers should focus on logical design rather than memorizing patterns.
+
+
+Project Status and Upcoming Topics
+The class covered the current status of a minor project, noting that transaction entities were not yet created due to time constraints, and discussed plans to continue with APIs in the next class. They reviewed the upcoming curriculum, which includes Redis caching, Spring Security, and a second minor project, followed by a major project that will cover JUnit and Mockito. The instructor explained the concepts of bidirectional and unidirectional relationships in Hibernate, discussing the trade-offs between eager and lazy initialization. They also clarified the differences between .properties and .yml files for environment configurations, and mentioned that profiling would be covered in a future class.
+
+
+AI can make mistakes. Review for accuracy.

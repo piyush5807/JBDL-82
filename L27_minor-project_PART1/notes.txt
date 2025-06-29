@@ -1,0 +1,14 @@
+
+JPA has 2 types of relationships
+
+1. Uni-directional relationship
+2. Bi-directional relationship
+
+
+    // One   To    Many
+    // One   To    One
+    // Many  To    One
+    // Many  To    Many
+
+The first part of the jpa join annotations belong to the entity class in which we are writing the annotation
+and the second part is written keeping in the mind the entity on top of which we are writing this annotation
