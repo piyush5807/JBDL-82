@@ -1,0 +1,111 @@
+
+JPA has 2 types of relationships
+
+1. Uni-directional relationship
+2. Bi-directional relationship
+
+
+    // One   To    Many
+    // One   To    One
+    // Many  To    One
+    // Many  To    Many
+
+The first part of the jpa join annotations belong to the entity class in which we are writing the annotation
+and the second part is written keeping in the mind the entity on top of which we are writing this annotation
+
+
+----------------------------------------------
+
+b1  Intro to Java    a1     available     student = null
+b2  Intro to Java    a1     available     student = null
+
+Step 1 : s1 --> Initiates an issue txn --> b1
+
+b1  Intro to Java    a1     unavailable     student = s1
+b2  Intro to Java    a1     available       student = null
+
+t1  issue        b1           s1         success          d1
+
+Step 2:   s1  --> Initiates a return txn  --> b1
+
+b1  Intro to Java    a1     available       student = null
+b2  Intro to Java    a1     available       student = null
+
+t1  issue        b1           s1         success          d1
+t2  return       b1           s1         success          d1 + 20
+
+DTOs are the classes which are used to transferring data across different java classes mostly used in requests and
+responses coming from the client or are being sent to the client as a response
+These are also known as POJO - plain old java object
+
+If you need to alter the message sent in the postman or as part of errors, you need to handle it via an interceptor class like controllerAdvice
+
+------------------
+
+Controller --> Service --> Repository --> DB
+dto          dto-->model     model
+
+-----------------------------------------------
+
+Command Line Runner is a functionality that anyone can use for different purposes
+1. For debugging without actually hitting the APIs
+2. Call JVM's garbage collector manually to clean up all the unused references
+3. File system cleaning or creating some temp files or folders on the filesystem
+
+mkdir c://  ...
+
+----------------------------
+
+    // Let's suppose book table has 1M records => 50 MB of data
+    // 1. Pagination: Page number , limit of the page
+
+    // 2. Searching: optional, depends on product req.
+    // 3. Sorting: Certain fields, optional
+    // 4. Filtering: Optional, depends on product req.
+
+
+------------------------------
+
+Unit test cases are basically the test cases written for a particular flow or function to verify if given certain test inputs, the code works as expected or not
+
+Expectation from the code                          Actual output from the code
+transactionId                                            transaction obj
+
+Dev 1    --> Issue transaction code --> Jan 2023
+         --> Unit test cases related to issue transaction (T1, T2)
+Dev 2    --> Adding the auditing in issue transaction flow --> July 2025
+         --> Existing unit test cases T1 & T2 might fail due to the code bug in Dev2's code
+
+2 possibilities
+1) His / her code is incorrect due to which the unit test fails
+
+Expectation from the code wrt UT                  Actual output from the code wrt UT
+                                                   wrong
+
+
+2) Due to dev2's changes which are correct but the unit test case needs to be updated to include dev2's changes as well
+
+Expectation from the code wrt UT                     Actual output from the code wrt UT
+            wrong                                           right
+
+Code will start breaking ...
+
+
+Ques. Why unit tests are required ?
+1)  To verify the behaviour of the code
+2)  To check existing functionality is not breaking
+3)  Increase code coverage
+
+-------------------------------
+
+Mock call or mocking an API call - when the API is called and it returns certain response, we are not going to that actually, instead we will mock this flow i.e we will say whenever such call happens, we can specify a dummy data
+
+Mockito framework / dependency allows us to mock the data coming from a certain flow
+
+Junit is used for verifying the output with the expected output, writing assertions, checking how many times a class' function has been called
+Junit is a library which provides various techniques of validations
+
+
+@InjectMocks -- Creates an instance of the class on top of which we are writing this annotation in a test class (~ @Component annotation defined in the actual source code i.e main directory)
+
+@Mock  -- @InjectMocks + autowires the dependency of the class on top of which we are writing in the class which is having @InjectMocks annotation
