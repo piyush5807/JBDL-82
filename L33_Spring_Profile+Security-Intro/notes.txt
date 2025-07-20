@@ -1,0 +1,27 @@
+
+1. application-staging.properties - debug - 1K requests per day - 2~3 debug logs
+   datasource.url = db2        -- db2 is less performant and cheap so that you can save cost
+
+
+2. application-prod.properties - info / warn       - 10 M requests per day
+   datasource.url = db1        -- db1 is more performant / reliable and scalable
+
+datasource.url = db1
+
+If debug logging level is enabled on production, I would 20M~30M extra logs => more logs files
+
+
+
+------------------------------
+Security -
+
+1. Authentication - 401 is the http status code that an entity gets when they try to request a protected resource and they itself are not a valid entity of the system
+2. Authorization - 403 is the http status code that an entity gets when they try to perform an action which they are not entitled to. Though they are a valid entity of the system.
+
+
+
+Password1 - cad24d03-9ad0-4444-8827-b460dd128a04
+Password2 - 68327d3f-f95b-4319-b5fb-679eb9d32fb7
+Password3 - 0a9a99a6-d9fe-449a-a625-d6842687e6d3
+
+

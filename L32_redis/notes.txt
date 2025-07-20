@@ -1,0 +1,25 @@
+
+
+Spring-boot-starter-data-jpa
+    -   spring-boot-starter
+    -   spring-data-jpa
+        -   spring-data-commons
+    -   hibernate-core
+
+Spring-boot-starter-data-redis
+    -   spring-boot-starter
+    -   spring-data-redis
+        -   spring-data-keyvalue
+    -   lettuce-core (Java Redis Client)   /  Jedis
+
+
+Serializer is a class / entity which converts the data from 1 format to another
+
+JDKSerializer
+
+ Storing data on redis server            java object -->   serialize()  --> byte[] --> Redis Server
+
+ Retrieving the data from redis server   java object <--  deserialize() <-- byte[] <-- Redis Server
+
+ Setex - Setting the object + setting the expiry
+ expire -- set the expiry on an existing object

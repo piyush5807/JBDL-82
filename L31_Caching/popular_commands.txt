@@ -62,8 +62,12 @@ HLEN
 
 
 Generic
-TTL
-EXPIRE
-EXPIREAT
-PEXPIRE
-PEXPIREAT
+TTL         --  -1 means the key will never expire,  -2 means the key has already expired,  >= 0
+EXPIRE      --  expire the key after a specific amount of time (in seconds)
+EXPIREAT    --  expire the key at an absolute time (given in epoch seconds)
+PEXPIRE     --  expire the key after a specific amount of time (in milliseconds)
+PEXPIREAT   --  expire the key at an absolute time (given in epoch milliseconds)
+
+
+
+
