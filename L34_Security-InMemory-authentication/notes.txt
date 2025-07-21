@@ -1,0 +1,81 @@
+
+1. application-staging.properties - debug - 1K requests per day - 2~3 debug logs
+   datasource.url = db2        -- db2 is less performant and cheap so that you can save cost
+
+
+2. application-prod.properties - info / warn       - 10 M requests per day
+   datasource.url = db1        -- db1 is more performant / reliable and scalable
+
+datasource.url = db1
+
+If debug logging level is enabled on production, I would 20M~30M extra logs => more logs files
+
+
+
+------------------------------
+Security -
+
+1. Authentication - 401 is the http status code that an entity gets when they try to request a protected resource and they itself are not a valid entity of the system
+2. Authorization - 403 is the http status code that an entity gets when they try to perform an action which they are not entitled to. Though they are a valid entity of the system.
+
+
+
+Password1 - cad24d03-9ad0-4444-8827-b460dd128a04
+Password2 - 68327d3f-f95b-4319-b5fb-679eb9d32fb7
+Password3 - 0a9a99a6-d9fe-449a-a625-d6842687e6d3
+
+
+JSESSIONID - 8867E1B4C9139BAFD119331DE418D0A1 (Unauthenticated user)
+
+JSESSIONID - AEA6ED02C38A718ED03D55BBDFAC7F56 (Sent by server to the client in the /login POST API response header)
+
+
+Application Context - Referred as IOC hypothetically
+
+
+5F057A903960E005B9DBAE6ECDA338C7 - Authenticated user's JSESSIONID
+
+
+fbdcd331-3cc8-498b-acfe-7072c38ede85 - pwd
+
+
+--------------------------------------------------
+
+Wrt: JDKSerialization
+serializer --> serializes the object : converting a java object to byte[]
+deserializer --> deserializes the object: converting the byte[] back to java object
+
+PasswordEncoder
+encode --> plain_text --> encrypted form
+           karan@123  --> swedehbe@13e3hb1qw2
+
+Person named Karan tries to login :
+
+decode --> encrypted form --> plain text (Not present)
+
+
+Step 1: Sign up
+1.1 The user selects a username and a password and creates an account in the system : Ex: karan, karan@123
+1.2 Internally spring security encrypts the user created password and stores in the datasource: Ex: karan, k!ww2s2
+
+
+Step 2: Login
+2.1 The user enters the selected username and password in step 1
+2.2 Spring security encodes the given password in step 2.1 and matches with the password retrieved from the datasource
+
+
+
+
+
+
+karan@123 - $2a$10$98umej46amBj40qP3Zt0Uu3ZDY6e/463sl.iywWP8/.CRLX1vvrsq
+karan@123 - $2a$10$iFoNuPS1xTz0mntSMOx8DOn.B2sNBhh2.XqkbqUosFxCk22uLRRZC
+
+
+
+
+
+
+
+
+
