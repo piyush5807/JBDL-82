@@ -1,0 +1,25 @@
+
+
+Facebook
+
+username  -- abc@gmail.com (email)
+password  -- abc@123
+
+Instagram
+username -- abc5807
+password -- abc@123
+
+Whatsapp
+username -- 99191010101
+password -- abc@123
+
+
+Authentication -- entity requesting for a resource is not valid   (401 --> Unauthorized)
+
+Authorization / Access control -- entity requesting for the resource is valid but does not have access to the resource / forbidden access (403 --> Forbidden access)
+
+
+UserController --> DemoUserService --> DemoConf / PasswordEncoder
+                                   --> DemoUserRepository
+
+SecurityConf   --> DemoUserService -->
