@@ -1,0 +1,21 @@
+Quick recap
+The meeting focused on API design best practices, with particular emphasis on pagination, searching, sorting, and filtering capabilities for handling large datasets. Class provided detailed explanations about the differences between filtering and searching in database queries, as well as guidance on implementing pagination in APIs. The session concluded with plans to cover additional topics including unit test cases, Spring profiles, security concerns, and command line runners in future meetings.
+
+
+Next steps
+All developers to implement pagination in all GET APIs going forward.
+All developers to consider adding search, filtering, and sorting capabilities to APIs as needed based on product requirements.
+Team to review and implement unit test cases for transaction flows (issue transaction and return transaction) in the next session.
+Team to discuss spring profiles in the next session.
+Team to review and address security concerns in the current project, particularly regarding student ID handling in API calls.
+Team to start learning about Redis next week.
+
+
+Summary
+API Design Best Practices
+The meeting focused on API design best practices, particularly around pagination, searching, sorting, and filtering. Class emphasized that pagination is mandatory for large datasets to control data flow between backend and frontend, and demonstrated how to implement it using page numbers and limits. The discussion also covered optional features like search and sort capabilities, with Class explaining that these should be included based on product requirements. Kumar and Prashant clarified the distinction between filtering and searching, with filtering being more focused on specific field-based criteria.
+
+
+Database Filtering vs. Searching Explained
+The meeting focused on explaining the differences between filtering and searching in database queries. Class explained that filtering performs exact matches on a single field, while searching allows for partial matches across multiple fields and can be considered a form of fuzzy search. They discussed the importance of implementing pagination in APIs to handle large datasets effectively. Kumar and Prashant asked questions to clarify the concepts, and Class provided detailed explanations. The conversation ended with plans to cover unit test cases, Spring profiles, and security concerns in the next session, as well as introducing command line runners for testing purposes.
+

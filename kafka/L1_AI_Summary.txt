@@ -1,0 +1,63 @@
+Quick recap
+The instructor provided a comprehensive overview of Apache Kafka, explaining its use as an asynchronous communication framework and comparing its publish-subscribe model to traditional synchronous API calls. The class explored Kafka's technical architecture, including its key components and message handling mechanisms, while discussing various use cases and deployment strategies for microservices and consumers in cloud environments. The session concluded with demonstrations of Kafka's partitioning and replication features, along with discussions about handling duplicate messages and maintaining data integrity across the system.
+Next steps
+- Class: Complete the leftover part of Kafka in the next session
+- Class: Cover major project starting from the next class after Kafka is completed
+- Class: Demonstrate Kafka server and zookeeper server setup in the next 15-20 minutes
+- Class: Create a topic, dummy consumer, and producer for practical demonstration
+- Class: Continue the discussion on Kafka replication, leader nodes, and ISR in tonight's class at 8 PM
+- Class: Demonstrate replication in Kafka with multiple brokers during the 8 PM class
+- Class: Explain leader and In-Sync Replica concepts during the 8 PM class
+- Class: Cover more details about Kafka's scaling capabilities and broker replication in tonight's session
+- Class: Explain replication and partitioning concepts in Kafka
+- Class: Add Kafka commands to the GitHub notes for reference
+- Class: Update the meeting notes with the concept that from any partition, only one consumer from a consumer group can consume messages
+- Class: Provide examples of use cases where intra-service pub/sub communication would be beneficial
+- Class: Share more information about Kafka retention time configuration options beyond the default 168 hours
+- Class: Provide more examples of how consumer entities are deployed separately from microservices
+- Class: Share documentation on deployment strategies for consumers in microservices
+- Class: Demonstrate the difference between intra-service and inter-service communication overhead
+- Class: Provide more information on how to deploy specific serverless functions without commenting out code in the serverless.yaml file
+- Class: Share documentation on Kafka's different message delivery protocols
+- Class: Explain the concept of consumer offset management in Kafka in more detail
+- Class: Discuss additional scenarios about new services interacting with the message queue system at the end of the session
+- Class: Provide more detailed explanation on partitioning in Kafka
+- Class: Explain the difference between push-based message brokers and Kafka's pull-based mechanism
+- Class: Continue the discussion on how consumers maintain offsets to avoid message duplication
+- Class: Cover scenarios where messages are published with keys and how it affects ordering
+- Amarkant: Verify the deployment architecture of the SQS consumer in his e-commerce project to confirm if it runs as a separate entity
+- Amarkant: Check how the SQS consumer was configured in the commerce service deployment
+- Amarkant: Verify if the consumer entity is retriggered when the microservice is redeployed
+- Amarkant: Research how RabbitMQ's push-based mechanism works for consumer registration when consumers come online
+- Amarkant: Implement idempotency checks in consumer logic to handle duplicate messages
+- Kumar: Review the notes on consumer acknowledgement mechanisms in Kafka
+- All participants: Download Kafka from the official website for practice if they haven't already
+- All participants: Review the concepts of partitioning and replication in Kafka for better understanding
+- All participants: Practice creating topics, producers, and consumers using Kafka commands demonstrated in the class
+- Attendees: Try experimenting with the "from beginning" flag in Kafka console consumer to understand message retrieval behavior
+- Attendees: Practice creating consumer groups and observe offset management behavior demonstrated in the session
+- Attendees: Implement consumer-side duplicate message handling using Redis cache or similar in-memory mechanisms
+- Attendees: Understand consumer group behavior and partition assignment for effective message processing
+Summary
+Kafka: Asynchronous Communication Framework
+The instructor introduced Kafka as a framework for asynchronous communication between entities, explaining its publish-subscribe model and comparing it to synchronous API calls. They discussed Kafka's advantages over other solutions, including its near real-time processing, high scalability, and ability to integrate with various languages and cloud providers. The instructor clarified that Kafka is not limited to microservices and can be used in older codebases, emphasizing its use cases in real-time event handling, analytics, and recommendations. They also addressed a question about the difference between Kafka and database triggers, explaining that Kafka is more versatile for tasks beyond database operations.
+Kafka vs One-to-One Communication
+The discussion focused on the differences between one-to-one communication and publish-subscribe models, with Amarkant explaining that publish-subscribe is asynchronous and can be consumed by multiple clients, while one-to-one communication is synchronous. Class explained that Kafka persists data for a configured retention period (default 168 hours) even after consumption, which is a feature difference from RabbitMQ where consumed messages are immediately removed from the queue. Sharad asked about communication between microservices within the same service, and Class clarified that direct function calls are the most reliable method, but explained that using a publish-subscribe model between different microservices would be more appropriate. Amarkant shared a real-world example of using Kafka within a microservice for bulk product upload to Elasticsearch, which Class confirmed was a valid use case for internal communication between different components of a single microservice.
+Microservices Deployment in Cloud Environments
+The discussion focused on deployment strategies for microservices and consumers in cloud environments. Class explained that while code bases for microservices and their consumers may appear identical, they must be deployed as separate entities in the cloud to ensure independence and fault tolerance. This separation allows consumers to continue running even if the microservice fails, though it introduces additional networking overhead and requires careful CI/CD pipeline configuration. The conversation also covered how DynamoDB streams can be used similarly to pub-sub patterns, triggering events when changes occur in specific tables, and how serverless functions can be deployed either as individual functions or as part of a complete service package.
+Kafka's Role in Microservice Architecture
+The class discussed the use cases and benefits of Apache Kafka, originally developed by LinkedIn for asynchronous communication and notifications. They explained how Kafka simplifies architecture by decoupling producers and consumers, reducing system overhead and making integrations between services easier. The class used a Netflix example to illustrate how a queue-based mechanism can simplify complex interactions between microservices, reducing code dependencies and enabling more flexible system architecture.
+Apache Kafka Overview and Architecture
+The instructor provided an overview of Apache Kafka, explaining its use cases and architecture. They discussed how Kafka is used by major companies like Netflix and Uber for real-time data processing, and covered the key components of Kafka: producers, consumers, brokers, and zookeeper. The instructor explained how brokers handle message replication for fault tolerance, and how zookeeper manages metadata and configuration for the Kafka cluster. They also touched on the concepts of message ordering, partitioning, and offset management to ensure data integrity and consistency.
+Kafka Architecture and Message Handling
+The discussion focused on Kafka's architecture and message handling mechanisms. Class explained that topics in Kafka serve as categories for related messages, with producers publishing messages to specific topics and consumers subscribing to those topics. He clarified that while Kafka supports both push and pull mechanisms, it primarily operates as a pull-based system where consumers periodically check for new messages. The conversation also covered how Kafka handles message storage across multiple brokers, with Class explaining that the number of brokers and zookeeper nodes is used to ensure fault tolerance and avoid single points of failure.
+Kafka Server Setup and Configuration
+The instructor demonstrated how to set up and configure a Kafka server, explaining the concepts of replication and partitioning. They showed how to install Kafka and Zookeeper, start the server, and create a topic. The instructor also explained the importance of understanding partitioning and replication for working with Kafka. They covered how to specify Bootstrap servers and other properties when running Kafka commands.
+Kafka Partitioning and Consumer Behavior
+The discussion focused on Kafka's partitioning mechanism and consumer group behavior. Class explained that from any given partition, only one consumer from a consumer group can consume messages, but a single consumer can consume from multiple partitions. This is done to avoid message duplication and maintain offset tracking. The class also covered how partitioning helps balance load by allowing multiple consumers to read messages in parallel, increasing consumption rate. Amarkant asked about duplicate message handling, and Class explained that while Kafka manages internal deduplication, best practices at the consumer level include implementing duplicate checks in the consumer's processing logic.
+Kafka Duplicate Event Handling
+The discussion focused on handling duplicate events in Kafka consumers and maintaining data integrity. Class explained how to use a Redis cache or in-memory mechanism to check for duplicate messages based on unique keys (like user ID or order ID) and reject duplicate requests without throwing errors. They also discussed the importance of maintaining idempotency in consumer systems. Kumar asked about the scenarios leading to message duplication, and Class clarified that it could occur due to producer retries or consumer offset issues. The conversation also covered the order of events across partitions in Kafka and how to maintain order using specific keys. Class provided examples of maintaining event order for better user experience and explained the use of PubNub for backend-to-frontend communication.
+Kafka Partitioning and Consumer Behavior
+The instructor demonstrated Kafka's partitioning feature, showing how multiple consumers can listen to different partitions to increase throughput. They explained how Kafka automatically creates a default consumer group for console consumers when no group is specified, and discussed the behavior of message delivery when consumers are stopped and restarted. The instructor clarified that messages are not delivered to a stopped consumer, and explained how the "from beginning" flag can be used to consume all messages from the start when a new consumer is created.
+Kafka Partitioning and Replication Overview
+The class discussed Kafka's partitioning and replication mechanisms, explaining how data is distributed across brokers and maintained in Zookeeper. They covered how consumers read messages from specific partitions and how offsets are managed to ensure data consistency. The instructor demonstrated altering a topic's partition count and explained that while users can specify the number of partitions and brokers, the exact mapping of partitions to brokers is managed automatically by Kafka and Zookeeper for optimal load balancing. The session concluded with plans to cover replication factor demonstrations in the evening's 8 PM class, with the instructor committing to add important terminal commands to the notes and push them to GitHub.

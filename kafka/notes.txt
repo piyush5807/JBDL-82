@@ -1,0 +1,18 @@
+Broker / Bootstrap server / Node
+
+
+Whenever we create a topic, by default there’s a partition that’s created for that topic
+Partition is nothing but a FIFO queue
+
+
+Note: From any partition, only one consumer from a consumer group can consume messages, multiple consumers from the same consumer group cannot consume message as it can lead to duplicacy.
+
+
+But one consumer can consume from multiple partitions
+
+
+1. Partitioning —  Helps in scaling a particular topic so that more number of consumers can be deployed to increase the consumption rate
+
+
+2. Replication — Helps in avoiding single point of failure in the kafka system by duplicating the data on multiple nodes. If one of the node goes down, other nodes, will be able to provide the data that the consumer might be interested in 
+

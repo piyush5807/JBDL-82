@@ -1,0 +1,72 @@
+Quick recap
+
+The instructor demonstrated setting up a Spring Boot project for an employee management system, covering project creation, dependencies, and the structure of a multi-layered class system for handling requests. They explained concepts such as dependency injection, bean creation, and database interactions, including the use of prepared statements for improved performance and security. The session concluded with a successful implementation of data insertion into a database table, with plans to cover additional API functionalities in the next class.
+
+
+Next steps
+
+Class: Cover GET, DELETE, and UPDATE APIs in the next session
+
+Class: Discuss pros and cons of the current approach and JPA/Hibernate in the next session
+
+Class: Fix the Lombok dependency issue in the IDE for the next class session
+
+Class: Push the current code to Github repository within 15-20 minutes after the meeting
+
+Students: Discuss and decide whether to extend future class timings from 8:00 PM to 11:00 PM IST
+
+
+
+Summary
+
+Spring Boot Employee Management Setup
+The instructor demonstrated setting up a new Spring Boot project for an employee management system, explaining the dependencies needed including Spring Web, MySQL driver, and Lombok. They discussed the choice of Java version, explaining why they prefer Java 8 despite the availability of Java 17, due to better documentation and bytecode visibility. The instructor outlined the project's goal of creating CRUD APIs for employee management, emphasizing that they would not use in-memory data structures.
+
+
+In-Memory vs. Database Trade-Offs
+
+The instructor discussed the trade-offs between using in-memory data structures and databases for storing data in real-time applications. They explained that while in-memory data structures offer fast performance but are volatile, databases provide persistent storage but can introduce latency. The instructor then demonstrated creating a REST controller to store employee information in a database, defining an Employee class with attributes like employee ID, name, department, employment type, salary, and joining date. They also explained the concept of enums as a way to enforce constant values for certain attributes.
+
+
+Lombok Setup and Best Practices
+
+The instructor demonstrated how Lombok can be used to automatically generate getters and setters in Java code, reducing boilerplate code. However, there was an issue with the IDE settings that prevented the Lombok annotations from working properly, despite having the correct version (1.18.24) and proper dependency configuration. The instructor decided to proceed without Lombok for the current session and will cover its benefits in the next class, while also explaining that using Lombok is considered a best practice in real-world projects.
+
+
+Java Project Setup and Dependencies
+
+The discussion focused on setting up a new Java project using IntelliJ IDEA, comparing different project creation options and dependencies. Class explained the difference between plugins and dependencies, clarifying that while plugins enhance IDE functionality (like navigation and database viewers), dependencies are necessary for the project's code to function. Arun raised a question about excluding certain configurations, which led to an investigation of Lombok's role in generating getters and setters, though it was determined that excluding the configuration wasn't resolving the current issues. Rishav asked about the difference between importing projects from Spring.io and downloading plugins from the IntelliJ marketplace, which Class clarified by explaining that plugins are separate from dependencies and must be installed in the IDE for specific features.
+
+
+Multi-Layered Class System Overview
+
+The instructor explained the structure of a multi-layered class system for handling requests, including the controller, service, and repository layers. They discussed how requests flow through these layers, with the controller receiving requests, the service handling business logic, and the repository interacting with the database. The instructor also covered the concept of dependency injection and how to use Spring to automatically wire objects together, reducing the need to create new objects manually.
+
+
+Spring Dependencies and Error Propagation
+
+The instructor explained how dependencies in a Spring application work, using a scenario with Employee Controller, Employee Service, and Employee Repository. They demonstrated how an exception in the repository propagates through the service to the controller, showing that beans are not necessarily created even if objects are instantiated. The instructor emphasized that when debugging such errors, it's best to start from the bottom of the stack trace and work up, as this approach helps identify the root cause more efficiently. They also drew an analogy to a corporate hierarchy to illustrate how dependencies work in the application.
+
+
+Spring Bean Creation and Injection
+
+The discussion focused on understanding object and bean creation in Spring, particularly regarding the Employee Repository. Class explained that while an object is created when the constructor is called, if an exception occurs in the constructor, the bean is not created, leading to a failed auto-wiring attempt. Rohit and Rishav clarified that the object creation failure occurs because the dependency (Employee Repository) was not reached, and Class emphasized that proper bean creation requires either component or @Repository annotation for Spring to initialize the object. The conversation concluded with Class demonstrating how to correct the code by ensuring proper bean creation and auto-wiring through constructor injection.
+
+
+Java Database Table Management
+
+The discussion focused on creating and managing a database table in a Java application. Class explained the process of creating an employee table, including decisions about when to create the table and the importance of using a private method for table creation within the EmployeeRepository class. They discussed the use of a Singleton pattern for managing database connections and the benefits of using prepared statements to prevent SQL injection. The team also addressed issues with table creation upon application restart and modified the SQL query to include an "IF NOT EXISTS" clause to prevent duplicate table creation.
+
+
+
+Java Database Prepared Statements Demo
+
+The instructor demonstrated how to use prepared statements in Java to insert data into a database, explaining the use of placeholders and type conversions between Java and SQL data types. They encountered and resolved issues with data types, including converting an enum to a string and handling dates, before successfully inserting data into the employees table. The instructor also showed how to test the API endpoint using Postman and identified a minor typo in the table name that was causing errors.
+
+
+SQL Prepared Statements Performance Benefits
+
+The instructor explained the difference between normal statements and prepared statements in SQL, focusing on performance benefits. Prepared statements offer improved performance by caching compiled queries, reducing the need for repeated compilation, and allowing dynamic parameter substitution. The instructor also mentioned that while prepared statements provide advantages like preventing SQL injection, they require more effort to format. The class will continue with Get, Delete, and Update APIs in the next session, and the instructor will explore LongBog advantages and push code to GitHub.
+
+
+AI can make mistakes. Review for accuracy.

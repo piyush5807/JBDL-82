@@ -1,0 +1,60 @@
+Quick recap
+The meeting focused on teaching unit testing concepts and practices, including the importance of writing test cases for code verification and early issue detection. The instructor covered various aspects of unit testing in Java, including code coverage metrics, mocking techniques using JUnit and Mockito, and handling null pointer exceptions. The session concluded with discussions about transaction service testing, assertion versus verification usage in unit tests, and the completion announcement of the minor project, with upcoming topics covering caching with Redis and Spring profiles.
+
+
+Next steps
+Class: Push the code from yesterday's and today's session, including unit test cases for issue transaction and return transaction
+Class: Cover Spring profiles and Redis caching in the next two classes
+Students: Practice writing unit test cases for the calculate fine functionality in the transaction service
+Students: Review and understand the difference between using assertions vs. verifications in unit test cases, especially for scenarios involving business logic
+
+
+Summary
+
+Unit Testing for Digital Library
+The instructor explained the importance of writing unit test cases for the digital library project, emphasizing that they help verify code functionality and catch issues early in the development process. They discussed two main purposes of unit tests: ensuring code works as expected and helping the entire team identify and fix problems. The instructor also provided an example scenario where a developer made changes to an issue transaction function that caused system failures, illustrating how unit tests could have prevented this issue by identifying the problem during local development.
+
+
+Unit Testing Fundamentals and Best Practices
+The class discussed the importance of unit testing in software development, focusing on two scenarios where test cases might fail: either due to incorrect code or because the test cases need updating to account for changes. They explored the purposes of unit testing beyond verifying code correctness, including easier debugging, ensuring existing functionality doesn't break, supporting CI/CD pipelines, and increasing code coverage. The class emphasized that while code coverage is an important metric, developers should prioritize writing test cases for classes containing business logic rather than focusing solely on controllers and repositories.
+
+
+Java Unit Testing Libraries Overview
+The instructor discussed unit testing libraries in Java, focusing on JUnit and Mockito. They explained that JUnit is used for writing test cases and making assertions, while Mockito is used for mocking external calls to return dummy data. The instructor emphasized that writing unit tests from scratch is easier than modifying existing tests, and shared insights about working with legacy code in large companies versus startups. The session concluded with a brief discussion about different ways to run applications, including a command-line option that was not previously covered.
+
+
+Code Coverage and Unit Testing
+The instructor explained code coverage metrics, particularly focusing on line, class, and method percentages, and emphasized that line percentage is most commonly used when discussing code coverage. They discussed how code quality and coverage metrics can impact a company's valuation during potential acquisitions, noting that Zeta's actual code coverage was lower than their claimed 45% when audited by PwC. The instructor then demonstrated how to write unit tests using JUnit and Mockito, explaining the importance of matching the test directory structure to the main code directory and showing how to use annotations to specify test runners.
+
+
+Mocking in JUnit and Mockito
+The discussion focused on understanding and implementing mocking in unit tests using JUnit and Mockito. The instructor explained the difference between @InjectMocks and @Mock annotations, with @InjectMocks creating an instance of the class being tested and auto-wiring its dependencies, while @Mock creates mock objects for parent dependencies. They demonstrated how to write test cases for a transaction service, including handling dependencies and injecting mock objects. The instructor emphasized that @InjectMocks is similar to a component annotation, while @Mock behaves like auto-wiring. They concluded by showing how to set up and run test cases with dummy data.
+
+
+Mocking Repositories for Unit Tests
+The instructor explained how to handle null pointer exceptions in unit tests by using mock objects. They demonstrated fixing issues in a transaction service by mocking book and student repositories, and showed how to return dummy objects instead of accessing null repositories. The instructor emphasized that for unit tests, they only need to check the transaction creation and issue functionality, not the entire flow including book and student retrieval. They also explained that when dealing with relationships like books issued to students, they can return empty lists instead of accessing null repositories.
+
+
+Resolving Null Pointer Exception
+The team discussed a null pointer exception related to the "Max allowed books" property in a transaction service. They explored various solutions, including mocking, direct assignment, and constructor initialization. Through debugging, they discovered that defining a default value in the constructor (3) would work for test cases but might override runtime values from the application.properties file. The solution they settled on was to define a default value in the constructor (3) and ensure that the application.properties file takes precedence if values are defined there, thus resolving the null pointer exception while maintaining correct behavior in both test and runtime environments.
+
+
+Removing Hardcoded Values in Testing
+The team discussed the issue of hardcoding values in source code for testing purposes and explored alternative approaches. They considered creating a utility function that accepts additional parameters, allowing for more flexibility in testing while maintaining the original function's interface for the controller. The discussion also covered how to mock the transaction repository's save method and the importance of understanding when to write test cases for specific functions. The team concluded by deciding to modify the code to use the utility function and remove hardcoded values.
+
+
+Transaction Mocking and Equality Testing
+The discussion focused on implementing transaction object mocking and equality checks in a test environment. Class explained the challenges of using "marketo.equals" versus "marketo.any" for object comparisons, demonstrating how reference equality could lead to failed mock calls. Kumar raised a question about handling maximum allowed conditions, which Class addressed by explaining the need to properly check both student and book availability. The team identified and fixed an issue with transaction status updates and book references, with Aporva pointing out a specific line where the updated book reference needed to be used. The session concluded with successful testing of the transaction flow, including proper handling of external transaction IDs and status updates.
+
+
+
+Mockito Verification Techniques in Testing
+The instructor explained the use of mockito verifications in unit testing, demonstrating how to verify the number of calls to specific methods and the importance of keeping test cases updated when code changes. They showed that verifications are useful for catching unexpected calls that could break the expected behavior of a system, though in this particular example the use case was somewhat contrived. The discussion highlighted that while assertions validate function outputs, verifications ensure that the correct number of calls are made to different services, helping maintain the integrity of the transaction flow.
+
+
+Transaction Retrieval Function Explanation
+The discussion focused on explaining a function that retrieves transactions by student ID, book ID, and transaction type, ordering them by ID in descending order. The function was demonstrated with examples, and the importance of writing test cases for both positive and negative scenarios was emphasized. The instructor explained how to increase test coverage by adding negative test scenarios and showed how to handle exceptions in test cases. Kumar and Shaun asked questions about the implementation and testing process, which were addressed by the instructor.
+
+
+Assertions vs Verification in Testing
+The discussion focused on the use of assertions versus verification in unit testing, particularly when dealing with database interactions. Class explained that while assertions are useful for validating logic and business rules, they are less effective when testing database interactions where the output depends on external data. They clarified that assertions should be used when there is logic to validate, regardless of whether databases are involved, and demonstrated this through examples including a string conversion function and transaction service. The conversation ended with an announcement that the minor project was complete, and the next topics would cover caching with Redis and Spring profiles.

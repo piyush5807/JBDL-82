@@ -1,0 +1,49 @@
+
+Whenever we create an admin, we will create a spring security user as well
+Whenever we create a student, we will create a spring security user as well
+
+
+user --> assigned roles
+
+USERROLES
+
+select * from userroles where userId = u1
+
+u1 --> r1
+u1 --> r2
+
+u2 --> r1
+u2 --> r3
+
+u1 --> hospital manager, collection agent
+        order:create        payment:collect
+
+role --> can have multiple permissions
+
+ROLEPERMISSIONS
+
+select * from rolepermissions where roleId = ?
+
+r1 --> p1
+r1 --> p2
+
+r2 --> p1
+r2 --> p3
+
+// u1 --> [Dev, IT]
+
+// [dev --> code:deploy, code:push, ]
+// [IT --> infra:deploy, infra:manage]
+
+// [u1 --> code:deploy, code:push, infra:deploy, infra:manage]
+
+// u1 --> [p1, p2, p3, p4, ...]
+
+permission / privilidge - granular level entity, cannot be modified
+syntax -- resource:action
+
+
+Custom Authorizer on top of AWS API gateway
+
+POST /orders      -->  order:create
+GET /shift/list    --> shift:list , attendance:list
