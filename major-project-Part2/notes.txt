@@ -1,0 +1,9 @@
+
+
+A (8) --> B (6 INR) at time - t1 (wallet updates not happened) e1 --> t4 A(5) -->
+
+A (8) --> C (3 INR) at time - t2 () e2 => A(5) --> C (+3) at time t3 < t4
+
+IDFC - 2 HOURS
+
+IMPS / NEFT - 2 hours

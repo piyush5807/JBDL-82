@@ -1,0 +1,64 @@
+Quick recap
+The team discussed the development of a wallet service including Kafka configuration, consumer setup, and necessary database fields, with the instructor demonstrating the creation of a working wallet service and transaction system. The team explored various aspects of wallet transactions, including validation checks, handling failed transactions, and implementing wallet update functionality, while discussing the pros and cons of synchronous versus asynchronous calls for transactions. The session concluded with a demonstration of caching implementation in a student management system and guidance on Java development and interview preparation, emphasizing system design and modular code writing as key focus areas.
+Next steps
+- Team: Implement security features for the wallet service to handle user authentication and authorization.
+- Team: Enhance the wallet model to include additional fields like bank account information, payment methods, and KYC status.
+- Team: Complete the transaction service implementation to enable money transfers between users.
+- Team: Make the currency configuration dynamic rather than hardcoded.
+- Class: Complete the Kafka listener implementation in the Wallet Service to process transaction events.
+- Class: Implement the wallet balance update logic when transactions are processed.
+- Class: Implement the transaction status update mechanism after wallet updates are completed.
+- Kumar: Implement the foreign key relationship between user and wallet tables.
+- Sharad: Review the transaction validation logic in the wallet service.
+- Development team: Add security features to the transaction service to eliminate the need for sender information in requests.
+- Development team: Evaluate the necessity of the external transaction ID field.
+- Transaction Service team: Implement error handling for cases where sender or receiver wallets don't exist.
+- Wallet Service team: Finalize the approach for handling transactions when receiver wallet doesn't exist.
+- Development team: Complete the Kafka event implementation for wallet updates communication between services.
+- Development team: Add proper validation checks in the Wallet Service for transaction processing.
+- Development team: Implement the external transaction ID tracking between services.
+- Transaction Service team: Implement validation checks for wallet existence in the transaction service.
+- Wallet Service team: Implement the wallet update functionality with proper error handling.
+- Wallet Service team: Implement the Kafka producer code to publish wallet update events.
+- Transaction Service team: Implement the Kafka consumer code to listen for wallet update events and update transaction statuses.
+- Development team: Add proper annotations for update operations in repositories.
+- Development team: Test the end-to-end flow of transaction processing with Kafka integration.
+- Team: Implement notification service to send email/SMS/push notifications when transactions are completed.
+- Team: Implement additional error handling for asynchronous transactions to ensure consistency.
+- Team: Consider implementing analytics service to read from Kafka queue for transaction data.
+- All attendees: Add timestamps to the transaction model to track created_at and updated_at times.
+- All attendees: Implement additional error handling and Cron jobs to manage failed transactions.
+- All attendees: Consider implementing proper consistency checks when handling multiple simultaneous transactions.
+- Class: Push the major project part 2 code to GitHub after the class.
+- Class: Add Kafka commands to the GitHub repository.
+- Class: Share the website with programming framework interview questions to Kumar via WhatsApp.
+- Kumar: Share the interview questions website with the group after receiving it from Class.
+- Students: Practice building small applications like image parser, FTP server, or file upload server to improve Java skills.
+- Students: Practice low-level design problems on platforms like interview.io to improve system design skills.
+- Class: Share the Git tutorial link for learning about code commits and deployment.
+- Students: Learn about LLMs and AI integration to stay competitive in the job market.
+- Students: Reach out to Class for mock interviews when prepared.
+- Team: Consider implementing multiple wallet types per user in future iterations.
+Summary
+Wallet Service Kafka Integration Planning
+The team discussed the development of a wallet service, focusing on Kafka configuration and consumer setup. They defined necessary fields for the wallet table, including ID, balance, created date, updated date, user ID, and currency code. The team planned to create a wallet for users upon onboarding, using a Kafka listener to consume events from the user created/updated topic. They also discussed adding dependencies for JSON processing and handling potential exceptions when parsing messages.
+Wallet Service Implementation Demonstration
+The instructor demonstrated the creation of a wallet service, including handling user data and wallet balances. They discussed the implementation of a repository interface and the use of JPA to manage database operations. The instructor also showed how to use the Ultimate Edition tool for code suggestions and database visualization. Finally, they demonstrated creating multiple user wallets and verified that the data was being stored correctly in both the user and wallet tables.
+Transaction System Integration Demonstration
+The instructor demonstrated a transaction system where users can send money, with the transaction being initially created in a pending state and later updated based on wallet service events. The transaction service publishes a Kafka event with transaction details, which the wallet service consumes to update both sender and receiver wallets. The instructor also introduced an optional external transaction ID feature, though its use case was left for discussion.
+Wallet Transaction Validation Discussion
+The team discussed validation checks for wallet transactions, focusing on sender and receiver wallet existence and balance verification. They agreed that the wallet service should first check if the sender's wallet exists and has sufficient balance before proceeding with the transaction, as this is crucial to avoid null pointer exceptions, especially in API calls. Sharad suggested removing redundant checks, but Class emphasized the importance of these validations for both UI and API scenarios. They also discussed handling scenarios where the receiver's wallet does not exist, with options to store funds in a dormant account, create a new wallet, or throw an error, pending product requirements.
+Wallet Update and Event Strategy
+The team discussed implementing wallet update functionality and event publishing. They explored two approaches to updating wallet balances: using save commands or update commands, with the latter requiring @Modifying and @Transactional annotations. The discussion then focused on how to communicate wallet updates to the transaction service, with Kumar suggesting using events and making the wallet service act as both a consumer and producer. The team agreed to include key data in the published events: external transaction ID, sender and receiver wallet IDs, sender ID, and status, with the latter being particularly important for failure scenarios.
+Transaction Status and ID Management
+The team discussed handling failed transactions and maintaining transaction status. They clarified that external transaction IDs are generated at the start of a transaction and will not be duplicated due to their UUID-based generation. The team modularized code to handle wallet updates and transaction status updates, with Class demonstrating how to check wallet update status and update transactions accordingly. They also discussed the need for JPA modifying annotations when updating or deleting data, and Atharva raised a question about handling duplicate external transaction IDs, which Class explained would not occur due to the UUID generation method.
+Kafka-Based Money Transfer System Demo
+The instructor demonstrated a working money transfer system consisting of transaction, wallet, and user services communicating through Kafka queues. They identified and fixed several issues including a data type mismatch between string and long in the wallet model, and demonstrated how transactions and wallet updates work in real-time. The instructor suggested an additional improvement to add a notification service that would send email/SMS notifications when transactions are completed, and explained the two main flows of the system: user onboarding with wallet creation, and transaction processing between services.
+Transaction Call Strategies Discussed
+Sharad and Class discussed the use of synchronous versus asynchronous calls for transactions and user interactions. Class explained that while asynchronous calls can improve user experience by allowing users to navigate away from a payment screen while waiting for a response, they can lead to inconsistencies if not handled properly, especially for monetary transactions. They discussed examples from various platforms like Amazon and Google Pay to illustrate different approaches. Sharad asked about the use cases for synchronous calls, and Class provided examples such as database queries and seat booking systems where consistency is crucial. They also touched on the challenges of handling multiple transactions simultaneously and the importance of database consistency in managing these scenarios.
+Asynchronous Payment System Challenges
+The discussion focused on the asynchronous nature of payment systems and the potential user experience issues when transactions are not processed in real-time. Sharad and Class explored a scenario where a user initiates a payment, but the system takes several minutes to process, leading to confusion and poor user experience. They compared this with real-world examples like IRCTC and NEFT transactions, highlighting that while asynchronous systems are common in merchant payments and order bookings, synchronous systems are preferred for bank-related transactions. The conversation concluded that while the discussed architecture might not be ideal for all scenarios, it served as a valuable learning experience for understanding Kafka's functionality.
+Redis Caching in Student System
+The instructor demonstrated how to implement caching in a student management system using Redis, explaining the process of storing student data in both the database and cache, with emphasis on handling cache misses and cache hits. They discussed best practices for caching, including only caching active student data and not overpopulating the cache. The instructor also shared that they focus on system design and logic in interviews rather than language-specific questions, and recommended resources for practicing Spring Boot and Java interview questions.
+Java Interview Preparation Strategies
+The discussion focused on Java development and interview preparation. Class explained that companies assess candidates on system design, coding skills, and modular code writing abilities, with Java remaining a popular language despite AI advancements. Jaykumar sought guidance on system design learning, and Class recommended practicing LLD (Low Level Design) through building small systems and using design patterns, while also suggesting resources like Innovative.io for practice questions. The session concluded with Class offering to share code on GitHub and providing access to recorded sessions for one year, while encouraging participants to reach out for further assistance.
